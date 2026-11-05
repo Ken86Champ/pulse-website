@@ -1643,4 +1643,34 @@ window.PULSE_LAUNCH_CONFIG = {
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();
-</script></body></html>
+</script>
+<style id="pulse-language-video-fix">
+.pulse-language{position:relative;z-index:110}
+.pulse-language-trigger{cursor:pointer}
+.pulse-language.is-open .pulse-language-menu{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translateY(0)!important;z-index:120}
+.pulse-language-menu{pointer-events:none}
+.what-video video.pulse-intro-video{object-fit:contain!important;filter:none!important;image-rendering:auto;transform:none!important}
+</style>
+<script id="pulse-language-functional">
+(function(){
+ function init(){
+  const root=document.getElementById('pulseLanguage'),trigger=document.getElementById('pulseLanguageTrigger'),current=document.getElementById('pulseLanguageCurrent');
+  if(!root||!trigger||!current)return;
+  const close=()=>{root.classList.remove('is-open');trigger.setAttribute('aria-expanded','false')};
+  trigger.addEventListener('click',e=>{e.stopPropagation();const open=root.classList.toggle('is-open');trigger.setAttribute('aria-expanded',String(open))});
+  document.addEventListener('click',e=>{if(!root.contains(e.target))close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+  root.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{
+   const lang=button.getAttribute('data-lang');close();
+   if(lang==='de'){document.cookie='googtrans=/de/de;path=/';location.href=location.pathname+location.search;return}
+   // Google Translate renders the entire page in the chosen language.
+   const target=new URL('https://translate.google.com/translate');
+   target.searchParams.set('sl','de');target.searchParams.set('tl',lang);
+   target.searchParams.set('u',location.href);
+   location.assign(target.toString());
+  }));
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+</body></html>
