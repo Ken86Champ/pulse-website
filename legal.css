@@ -1,0 +1,41 @@
+:root {
+  color-scheme: light;
+  font: 16px/1.65 system-ui, sans-serif;
+  color: #211936;
+  background: #f8f6fc;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.site-header, main, .site-footer {
+  width: min(100% - 2rem, 54rem);
+  margin-inline: auto;
+}
+.site-header { padding: 1.25rem 0; }
+.brand { font-size: 1.35rem; font-weight: 850; letter-spacing: .06em; text-decoration: none; }
+main {
+  padding: clamp(1.1rem, 4vw, 2.8rem);
+  background: #fff;
+  border: 1px solid #e9e2f4;
+  border-radius: 1.25rem;
+}
+h1, h2 { line-height: 1.22; }
+h1 { margin: 0; font-size: clamp(1.9rem, 6vw, 3rem); letter-spacing: -.045em; }
+h2 { font-size: 1.28rem; margin-top: 1.8rem; }
+h3 { font-size: 1.08rem; }
+a { color: #5631cf; text-underline-offset: .2em; overflow-wrap: anywhere; }
+:focus-visible { outline: 3px solid #6942e4; outline-offset: 4px; }
+.meta { color: #615a70; }
+.notice { padding: .85rem 1rem; background: #f3eeff; border-radius: .65rem; }
+.site-footer { padding: 1.2rem 0 2rem; font-size: .9rem; }
+.site-footer nav, .page-nav { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
+.site-footer [aria-current] { font-weight: 750; }
+address { font-style: normal; }
+.button {
+  display: inline-block;
+  padding: .65rem 1rem;
+  border-radius: .65rem;
+  background: #5933e1;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
