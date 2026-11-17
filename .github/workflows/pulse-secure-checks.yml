@@ -1,0 +1,25 @@
+name: PULSE Secure Onboarding Checks
+on:
+  push:
+    branches: [pulse-secure-onboarding-v1]
+  pull_request:
+    paths:
+      - 'api/**'
+      - 'lib/**'
+      - 'tests/**'
+      - 'onboarding.html'
+      - '.github/workflows/pulse-secure-checks.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - run: node --test tests/health-encryption.test.js tests/onboarding-validation.test.js
+      - run: |
+          for file in api/*.js lib/*.js; do node --check "$file"; done
