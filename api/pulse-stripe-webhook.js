@@ -22,7 +22,7 @@ module.exports=async function(req,res){
    const existing=await db('pulse_coaching_customers','select=id&stripe_checkout_session_id=eq.'+encodeURIComponent(s.id)+'&limit=1');
    if(!existing.length){
     await db('pulse_coaching_customers','','POST',{
-     tenant_id:pending.tenant_id,email:pending.email,stripe_checkout_session_id:s.id,encryption_context_id:pending.id,
+     tenant_id:pending.tenant_id,email:pending.email,stripe_checkout_session_id:s.id,encryption_context_id:pending.id,encryption_context_id:pending.id,
      stripe_customer_id:s.customer,stripe_subscription_id:s.subscription,
      encrypted_answers:pending.encrypted_answers,consent_version:pending.consent_version,
      status:'coaching_setup_required'
