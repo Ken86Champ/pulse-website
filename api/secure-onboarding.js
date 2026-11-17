@@ -53,21 +53,21 @@ module.exports = async function handler(req, res) {
     if (consentVersion !== 'pulse-privacy-v1') return send(res,400,{error:'Consent version required'});
     const {plain,health} = validate(answers);
     const tokenHash = crypto.createHash('sha256').update(token).digest('hex');
-    const invites = await db('pulse_onboarding_invites','select=id,tenant_id,email,expires_at,completed_at,stripe_checkout_session_id&token_hash=eq.'+tokenHash+'&limit=1');
+    const invites = await db('pulse_onboarding_invites','select=id,tenant_id,email,expires_at,completed_at,stripe_checkout_session_id,stripe_customer_id,stripe_subscription_id&token_hash=eq.'+tokenHash+'&limit=1');
     const invite = invites[0];
     if (!invite || invite.completed_at || Date.parse(invite.expires_at) <= Date.now() || invite.email.toLowerCase() !== plain.email.trim().toLowerCase()) return send(res,403,{error:'Invitation invalid or expired'});
     // Verify paid subscription against Stripe, not browser-controlled claims.
     const Stripe = require('stripe');
     const stripe = new Stripe(process.env.PULSE_STRIPE_SECRET_KEY);
     const session = await stripe.checkout.sessions.retrieve(invite.stripe_checkout_session_id);
-    if (session.payment_status !== 'paid' || session.mode !== 'subscription' || !session.subscription) return send(res,403,{error:'Payment not confirmed'});
+    if (session.payment_status !== 'paid' || session.mode !== 'subscription' || !session.subscription || session.customer !== invite.stripe_customer_id || session.subscription !== invite.stripe_subscription_id) return send(res,403,{error:'Payment not confirmed'});
     // Invite UUID is immutable and unique. No plaintext health fields enter answers.
     if (!UUID.test(invite.id) || !UUID.test(invite.tenant_id)) throw new Error('Invalid invitation record');
     const encrypted = encryptHealthData(health, invite.id);
-    const rows = await db('pulse_onboarding_submissions','on_conflict=invite_id',{
+    const rows = await db('pulse_onboarding_submissions','',{
       method:'POST',body:{invite_id:invite.id,tenant_id:invite.tenant_id,answers:plain,health_encrypted:encrypted,status:'coaching_setup_required',consent_version:consentVersion}
     });
-    // Fail-closed: if unique invite already exists, return conflict rather than overwrite.
+    // Unique invite index rejects duplicate submissions; do not overwrite existing health data.
     if (!rows.length) throw new Error('Submission not persisted');
     await db('pulse_onboarding_invites','id=eq.'+invite.id+'&completed_at=is.null',{method:'PATCH',body:{completed_at:new Date().toISOString()}});
     return send(res,201,{ok:true,submissionId:rows[0].id});
