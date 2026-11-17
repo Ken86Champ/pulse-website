@@ -17,26 +17,5 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/impressum.html",
-      "destination": "/rechtliches.html#impressum",
-      "permanent": false
-    },
-    {
-      "source": "/datenschutz.html",
-      "destination": "/rechtliches.html#datenschutz",
-      "permanent": false
-    },
-    {
-      "source": "/agb.html",
-      "destination": "/rechtliches.html#mitgliedschaft",
-      "permanent": false
-    },
-    {
-      "source": "/disclaimer.html",
-      "destination": "/rechtliches.html#hinweis",
-      "permanent": false
-    }
-  ]
+  "outputDirectory": "."
 }

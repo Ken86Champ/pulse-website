@@ -1,6 +1,6 @@
 # PULSE B2C onboarding and checkout
 
-Production stays behind `PULSE_SECURE_ONBOARDING_ENABLED`. The landing-page CTAs on this branch start the seven-step form. There is no customer creation until a signed Stripe event confirms the specific subscription was paid.
+Production stays behind `PULSE_SECURE_ONBOARDING_ENABLED`. The landing-page CTAs link to membership details and then to the seven-step form. There is no customer creation until a signed Stripe event confirms the specific subscription was paid.
 
 ## Vercel settings
 
@@ -26,6 +26,8 @@ Keep the existing sandbox destination and use the same path `/api/stripe/webhook
 On an existing project apply `sql/pulse-checkout-atomic.sql`. For a clean database run `sql/pulse-secure-checkout.sql` first. Successful payment creates one coaching customer in a single database transaction. Successful, failed and expired attempts have their encrypted drafts and draft email cleared. Monitor Stripe for missing deliveries and agree on a backstop retention period for unanswered attempts and paid coaching profiles.
 
 Stripe receives the billing email and a random reference. The complete questionnaire is encrypted using AES-256-GCM before it is written to Supabase. Browser users have no database grants or RLS policies. The Vercel function is configured for Frankfurt and the existing Supabase database is in Zurich. The final onboarding step records separate health consent and acceptance of the membership terms under a versioned policy. Verify the configured subprocessors and live merchant identity before enabling production. Keep health data out of analytics, email, and logs.
+
+Publish the terms and privacy pages in Stripe’s Public details for the correct merchant account. This flow records acceptance in onboarding before starting the payment. An independently shared Payment Link bypasses the onboarding flow and should be retired if it is replaced by this checkout.
 
 ## Manual coaching setup
 

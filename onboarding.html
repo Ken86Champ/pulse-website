@@ -69,8 +69,8 @@ function draw(){updateChrome();const oldToolbar=document.getElementById('pulseTo
 function legalLinks(privacyOnly=false){
   const [privacy,terms]=privacyLinks[language];
   const links=el('p','muted');
-  const pages=[[privacy,'/rechtliches.html#datenschutz']];
-  if(!privacyOnly)pages.push([terms,'/rechtliches.html#mitgliedschaft']);
+  const pages=[[privacy,'/datenschutz.html#onboarding']];
+  if(!privacyOnly)pages.push([terms,'/agb.html']);
   for(const [title,url] of pages){
     const link=el('a',null,title);
     link.href=url;link.target='_blank';link.rel='noopener';
