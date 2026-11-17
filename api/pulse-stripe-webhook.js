@@ -8,7 +8,7 @@ module.exports=async function(req,res){
  let event;
  try{
   const Stripe=require('stripe');const stripe=new Stripe(env('PULSE_STRIPE_SECRET_KEY'));
-  event=stripe.webhooks.constructEvent(await raw(req),req.headers['stripe-signature'],env('PULSE_STRIPE_WEBHOOK_SECRET'));
+  event=stripe.webhooks.constructEvent(await raw(req),req.headers['stripe-signature'],env('PULSE_SECURE_STRIPE_WEBHOOK_SECRET'));
   if(event.type==='checkout.session.completed'||event.type==='checkout.session.async_payment_succeeded'){
    const s=event.data.object;
    if(s.mode!=='subscription'||s.payment_status!=='paid')return reply(res,200,{received:true});
@@ -22,7 +22,7 @@ module.exports=async function(req,res){
    const existing=await db('pulse_coaching_customers','select=id&stripe_checkout_session_id=eq.'+encodeURIComponent(s.id)+'&limit=1');
    if(!existing.length){
     await db('pulse_coaching_customers','','POST',{
-     tenant_id:pending.tenant_id,email:pending.email,stripe_checkout_session_id:s.id,
+     tenant_id:pending.tenant_id,email:pending.email,stripe_checkout_session_id:s.id,encryption_context_id:pending.id,
      stripe_customer_id:s.customer,stripe_subscription_id:s.subscription,
      encrypted_answers:pending.encrypted_answers,consent_version:pending.consent_version,
      status:'coaching_setup_required'
