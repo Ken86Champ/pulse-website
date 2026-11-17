@@ -1,10 +1,7 @@
 const assert=require('node:assert/strict');
 const test=require('node:test');
 const {validate}=require('../lib/onboarding-server');
-function fixture(){
- const x={};for(const k of 'firstName lastName email phone street postal city country birthDate sex height job activity goal motivation challenge currentTraining plannedTraining days weeklyTime location duration experience diet dietStyle dietRules allergyTypes medicalTreatment medication heart musculoskeletal respiratory metabolic surgery otherHealth smoking source'.split(' '))x[k]='Test';
- return Object.assign(x,{email:'test@example.com',challenge:['Wenig Zeit'],days:['Montag'],location:['Fitnessstudio'],dietRules:['Keine besonderen Regeln'],allergyTypes:['Keine'],medicalTreatment:'Nein',medication:'Nein',heart:'Nein',musculoskeletal:'Nein',respiratory:'Nein',metabolic:'Nein',surgery:'Nein',otherHealth:'Nein',smoking:'Nein',gymMember:'Ja',confirmation:true,healthConsent:true});
-}
+function fixture(){ return {...require('./fixtures/onboarding'),email:'test@example.com'}; }
 test('accepts valid completed onboarding',()=>assert.equal(validate(fixture()).email,'test@example.com'));
 test('rejects missing health consent',()=>assert.throws(()=>validate({...fixture(),healthConsent:false})));
 test('rejects incomplete yes follow-up',()=>assert.throws(()=>validate({...fixture(),heart:'Ja'})));
@@ -13,3 +10,15 @@ test('requires home equipment',()=>assert.throws(()=>validate({...fixture(),loca
 test('rejects none plus other equipment',()=>assert.throws(()=>validate({...fixture(),location:['Zuhause'],equipment:['Keines','Laufband']})));
 test('accepts home treadmill',()=>assert.deepEqual(validate({...fixture(),location:['Zuhause'],equipment:['Laufband']}).equipment,['Laufband']));
 test('rejects oversized text',()=>assert.throws(()=>validate({...fixture(),job:'a'.repeat(1501)})));
+test('rejects invalid numeric values, impossible dates and unsupported country codes',()=>{
+ for(const fields of [{weight:'900'},{birthDate:'2001-02-29'},{country:'ZZ'},{height:'1e2'},{phone:'-------'}]){
+  assert.throws(()=>validate({...fixture(),...fields}));
+ }
+});
+test('requires the selected nutrition and allergy follow-ups',()=>{
+ assert.throws(()=>validate({...fixture(),dietStyle:'Andere Ernährungsform'}));
+ assert.throws(()=>validate({...fixture(),dietRules:['Andere']}));
+ assert.throws(()=>validate({...fixture(),allergyTypes:['Eigene ergänzen']}));
+ assert.throws(()=>validate({...fixture(),allergyTypes:['Keine','Soja']}));
+ assert.equal(validate({...fixture(),allergyTypes:['Eigene ergänzen','Soja'],allergies:'Test'}).allergies,'Test');
+});

@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "stripe": "^20.0.0"
+    "stripe": "20.4.1"
   }
 }
