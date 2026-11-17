@@ -7,7 +7,8 @@ module.exports=async function(req,res){
  if(process.env.PULSE_SECURE_ONBOARDING_ENABLED!=='true')return reply(res,503,{error:'Checkout not enabled'});
  try{
   if(!originOk(req))return reply(res,403,{error:'Invalid origin'});
-  if(Number(req.headers['content-length']||0)>32768)return reply(res,413,{error:'Payload too large'});
+  if(!/^application\/json(?:;|$)/i.test(req.headers['content-type']||''))return reply(res,415,{error:'JSON required'});
+  if(Number(req.headers['content-length']||0)>32768||Buffer.byteLength(JSON.stringify(req.body||{}),'utf8')>32768)return reply(res,413,{error:'Payload too large'});
   const answers=validate(req.body?.answers);
   if(req.body?.consentVersion!=='pulse-privacy-v1')return reply(res,400,{error:'Privacy consent required'});
   const tenantId=env('PULSE_B2C_TENANT_ID'),priceId=env('PULSE_STRIPE_PRICE_ID');
