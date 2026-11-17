@@ -5,6 +5,6 @@ const sample={
  location:['Fitnessstudio'],gymMember:'Ja',equipment:[],duration:'30–45 Minuten',experience:'Einsteiger',diet:'Nein',
  dietStyle:'Allesesser / Mischkost',dietRules:['Keine besonderen Regeln'],allergyTypes:['Keine'],
  medicalTreatment:'Nein',medication:'Nein',heart:'Nein',musculoskeletal:'Nein',respiratory:'Nein',metabolic:'Nein',surgery:'Nein',otherHealth:'Nein',smoking:'Nein',
- source:'Google',confirmation:true,healthConsent:true
+ source:'Google',confirmation:true,healthConsent:true,termsAccepted:true
 };
 module.exports = sample;

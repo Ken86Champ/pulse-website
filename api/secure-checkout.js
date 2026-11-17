@@ -22,7 +22,13 @@ module.exports = async function (req, res) {
     const key = env('PULSE_HEALTH_DATA_KEY');
     const fingerprint = createHmac('sha256', key).update(JSON.stringify([answers, locale, mode, tenant, price, origin, consentVersion])).digest('hex');
     const stripe = new Stripe(stripeKey, { maxNetworkRetries: 1, timeout: 8000 });
-    if (mode === 'live') ['PULSE_NOTIFY_RESEND_API_KEY', 'PULSE_NOTIFY_FROM', 'PULSE_NOTIFY_TO'].forEach(env);
+    if (mode === 'live') {
+      const webhookSecret = env('PULSE_STRIPE_LIVE_WEBHOOK_SECRET');
+      if (!webhookSecret.startsWith('whsec_') || webhookSecret === process.env.PULSE_STRIPE_WEBHOOK_SECRET) {
+        throw new Error('Live Stripe webhook is not configured separately from sandbox');
+      }
+      ['PULSE_NOTIFY_RESEND_API_KEY', 'PULSE_NOTIFY_FROM', 'PULSE_NOTIFY_TO'].forEach(env);
+    }
     const source = req.headers['x-vercel-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
     const bucket = createHmac('sha256', key).update(`checkout-ip:${source}`).digest('hex');
     const allowed = await db('rpc/pulse_allow_checkout', '', 'POST', { p_bucket: bucket });

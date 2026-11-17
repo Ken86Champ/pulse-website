@@ -9,7 +9,8 @@ Production stays behind `PULSE_SECURE_ONBOARDING_ENABLED`. The landing-page CTAs
 | `PULSE_SECURE_ONBOARDING_ENABLED` | `true` only for a configured environment |
 | `PULSE_STRIPE_MODE` | `test` in staging, `live` in production |
 | `PULSE_STRIPE_SECRET_KEY` | Secret or restricted key of the same mode |
-| `PULSE_STRIPE_WEBHOOK_SECRET` | Signing secret issued for that exact endpoint and mode |
+| `PULSE_STRIPE_WEBHOOK_SECRET` | Signing secret for the existing sandbox destination |
+| `PULSE_STRIPE_LIVE_WEBHOOK_SECRET` | Separate signing secret for the live Stripe destination |
 | `PULSE_STRIPE_PRICE_ID` | Active monthly CHF 98 recurring price for that mode |
 | `PULSE_PUBLIC_ORIGIN` | HTTPS origin for that environment with no trailing slash |
 | `PULSE_B2C_TENANT_ID` | UUID of the tenant or namespace for this flow |
@@ -20,11 +21,11 @@ Production stays behind `PULSE_SECURE_ONBOARDING_ENABLED`. The landing-page CTAs
 | `PULSE_NOTIFY_FROM` | Verified sender |
 | `PULSE_NOTIFY_TO` | Internal operations mailbox. In test, both emails go here |
 
-Keep the existing Stripe destination at `/api/stripe/webhook`. Subscribe it to `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`, `checkout.session.expired`, and `customer.subscription.deleted`. Use a dedicated Stripe staging destination with public delivery to that path and keep the other preview routes protected. Use separate staging credentials and data, and require test mode before entering a test card.
+Keep the existing sandbox destination and use the same path `/api/stripe/webhook` for the live-mode destination. Keep their signing secrets separate. Subscribe both to `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`, `checkout.session.expired`, and `customer.subscription.deleted`. Use a dedicated Stripe staging destination with public delivery to that path and keep the other preview routes protected. Use separate staging credentials and data, and require test mode before entering a test card.
 
 On an existing project apply `sql/pulse-checkout-atomic.sql`. For a clean database run `sql/pulse-secure-checkout.sql` first. Successful payment creates one coaching customer in a single database transaction. Successful, failed and expired attempts have their encrypted drafts and draft email cleared. Monitor Stripe for missing deliveries and agree on a backstop retention period for unanswered attempts and paid coaching profiles.
 
-Stripe receives the billing email and a random reference. The complete questionnaire is encrypted using AES-256-GCM before it is written to Supabase. Browser users have no database grants or RLS policies. Vercel Functions run in Frankfurt and the existing Supabase database is in Zurich. Update and approve the legal texts against the actual deployment, subprocessors, controller contact and data retention before enabling production. Keep health data out of analytics, email, and logs.
+Stripe receives the billing email and a random reference. The complete questionnaire is encrypted using AES-256-GCM before it is written to Supabase. Browser users have no database grants or RLS policies. The Vercel function is configured for Frankfurt and the existing Supabase database is in Zurich. The final onboarding step records separate health consent and acceptance of the membership terms under a versioned policy. Verify the configured subprocessors and live merchant identity before enabling production. Keep health data out of analytics, email, and logs.
 
 ## Manual coaching setup
 

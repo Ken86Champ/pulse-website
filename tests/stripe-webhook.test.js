@@ -20,12 +20,12 @@ const checkout = {
   amount_total: 9800
 };
 
-async function deliver({ type = 'checkout.session.completed', data = checkout, livemode = false, signed = true } = {}) {
+async function deliver({ type = 'checkout.session.completed', data = checkout, livemode = false, signed = true, signingSecret = process.env.PULSE_STRIPE_WEBHOOK_SECRET } = {}) {
   const payload = JSON.stringify({ id: 'evt_test', livemode, type, data: { object: data } });
   const req = Readable.from([payload]);
   req.method = 'POST';
   req.headers = { 'stripe-signature': signed ? Stripe.webhooks.generateTestHeaderString({
-    payload, secret: process.env.PULSE_STRIPE_WEBHOOK_SECRET
+    payload, secret: signingSecret
   }) : 'invalid' };
   const res = {
     setHeader() {},
@@ -56,11 +56,15 @@ test('existing webhook validates signed sandbox events and only provisions a pai
   const emails = [];
   const row = { customer_id: customerId, confirmed_at: null, notified_at: null };
   let databaseUnavailable = false;
+  let failBuyerEmail = false;
   t.mock.method(Stripe.resources.Subscriptions.prototype, 'retrieve', async () => ({ status: 'active' }));
   t.mock.method(globalThis, 'fetch', async (url, options) => {
     const data = JSON.parse(options.body);
     if (url.startsWith('https://api.resend.com/')) {
       emails.push({ data, key: options.headers['Idempotency-Key'] });
+      if (failBuyerEmail && options.headers['Idempotency-Key'].startsWith('pulse-order-confirmation/')) {
+        return Response.json({}, { status: 503 });
+      }
       return Response.json({ id: 'mail_fixture' });
     }
     assert.equal(options.headers.apikey, 'sb_secret_fixture');
@@ -98,4 +102,35 @@ test('existing webhook validates signed sandbox events and only provisions a pai
   assert.deepEqual(emails.map(email => email.key), [
     `pulse-order-confirmation/${customerId}`, `pulse-coaching-setup/${customerId}`
   ]);
+  row.confirmed_at = row.notified_at = null;
+  emails.length = 0;
+  failBuyerEmail = true;
+  assert.equal((await deliver()).code, 503);
+  assert.equal(row.confirmed_at, null);
+  assert.ok(row.notified_at);
+  failBuyerEmail = false;
+  assert.equal((await deliver()).code, 200);
+  assert.ok(row.confirmed_at);
+  assert.equal(emails.filter(email => email.key.startsWith('pulse-coaching-setup/')).length, 1);
+
+});
+
+test('live webhook keeps the existing sandbox destination active and rejects crossed signatures', async () => {
+  Object.assign(process.env, {
+    PULSE_STRIPE_SECRET_KEY: 'sk_live_fixture',
+    PULSE_STRIPE_WEBHOOK_SECRET: 'whsec_sandbox_fixture',
+    PULSE_STRIPE_LIVE_WEBHOOK_SECRET: 'whsec_live_fixture',
+    PULSE_SECURE_ONBOARDING_ENABLED: 'true',
+    PULSE_STRIPE_MODE: 'live'
+  });
+  try {
+    assert.equal((await deliver()).body.ignored, true);
+    assert.equal((await deliver({ livemode: true })).code, 400);
+    assert.equal((await deliver({ signingSecret: 'whsec_live_fixture' })).code, 400);
+    assert.equal((await deliver({
+      livemode: true, signingSecret: 'whsec_live_fixture', data: { ...checkout, metadata: {} }
+    })).body.provisioning, 'disabled');
+  } finally {
+    delete process.env.PULSE_STRIPE_LIVE_WEBHOOK_SECRET;
+  }
 });

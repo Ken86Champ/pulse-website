@@ -28,6 +28,20 @@ async function provision(session, stripe) {
   return { created: true, delivery_pending: true };
 }
 
+function verifiedStripeEvent(body, signature, webhookSecret, liveWebhookSecret) {
+  if (liveWebhookSecret) {
+    try {
+      const event = Stripe.webhooks.constructEvent(body, signature, liveWebhookSecret);
+      return event.livemode === true ? event : null;
+    } catch {
+      // The public endpoint also receives Stripe sandbox events signed with the existing secret.
+    }
+  }
+  if (!webhookSecret) return null;
+  const event = Stripe.webhooks.constructEvent(body, signature, webhookSecret);
+  return liveWebhookSecret && event.livemode !== false ? null : event;
+}
+
 async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -35,8 +49,10 @@ async function handler(req, res) {
   }
   const secretKey = process.env.PULSE_STRIPE_SECRET_KEY;
   const webhookSecret = process.env.PULSE_STRIPE_WEBHOOK_SECRET;
-  if (!secretKey || !webhookSecret) return reply(res, 503, { error: 'Webhook not configured' });
-  const stripe = new Stripe(secretKey, { maxNetworkRetries: 1, timeout: 8000 });
+  const liveWebhookSecret = process.env.PULSE_STRIPE_LIVE_WEBHOOK_SECRET;
+  if ((!webhookSecret && !liveWebhookSecret) || (liveWebhookSecret && liveWebhookSecret === webhookSecret)) {
+    return reply(res, 503, { error: 'Webhook not configured' });
+  }
   let event;
   try {
     const chunks = [];
@@ -47,16 +63,22 @@ async function handler(req, res) {
       if (length > 1048576) return reply(res, 413, { error: 'Webhook payload too large' });
       chunks.push(bytes);
     }
-    event = stripe.webhooks.constructEvent(Buffer.concat(chunks), req.headers['stripe-signature'], webhookSecret);
+    event = verifiedStripeEvent(Buffer.concat(chunks), req.headers['stripe-signature'], webhookSecret, liveWebhookSecret);
+    if (!event) return reply(res, 400, { error: 'Unexpected Stripe mode' });
   } catch {
     return reply(res, 400, { error: 'Invalid webhook signature' });
   }
 
+  if (liveWebhookSecret && process.env.PULSE_STRIPE_MODE === 'live' && event.livemode === false) {
+    return reply(res, 200, { received: true, ignored: true });
+  }
+  const stripe = secretKey && new Stripe(secretKey, { maxNetworkRetries: 1, timeout: 8000 });
   const secure = event.data.object.metadata?.pulse_flow === 'onboarding_v1';
   try {
     if (secure || (event.type === 'customer.subscription.deleted' && process.env.PULSE_SECURE_ONBOARDING_ENABLED === 'true')) {
       if (process.env.PULSE_SECURE_ONBOARDING_ENABLED !== 'true') return reply(res, 503, { error: 'Checkout temporarily paused' });
       const { mode } = config();
+      if (mode === 'live' && !liveWebhookSecret) return reply(res, 503, { error: 'Live webhook not configured' });
       if (event.livemode !== (mode === 'live')) return reply(res, 400, { error: 'Unexpected Stripe mode' });
       await fulfill(event, mode, stripe);
       return reply(res, 200, { received: true });
@@ -68,6 +90,7 @@ async function handler(req, res) {
     if (event.type !== 'checkout.session.completed' && event.type !== 'checkout.session.async_payment_succeeded') {
       return reply(res, 200, { received: true, ignored: true });
     }
+    if (!stripe) return reply(res, 503, { error: 'Stripe not configured' });
     return reply(res, 200, { received: true, ...await provision(event.data.object, stripe) });
   } catch (error) {
     console.error('PULSE webhook processing failed', event.id, error.type || error.name);

@@ -8,6 +8,8 @@ on:
       - 'lib/**'
       - 'tests/**'
       - 'onboarding.html'
+      - 'onboarding-schema.js'
+      - 'package-lock.json'
       - '.github/workflows/pulse-secure-checks.yml'
 jobs:
   test:
@@ -19,7 +21,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install --ignore-scripts --no-audit --no-fund
-      - run: node --test tests/health-encryption.test.js tests/onboarding-validation.test.js
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --test tests/*.test.js
       - run: |
-          for file in api/*.js lib/*.js; do node --check "$file"; done
+          for file in api/*.js api/stripe/*.js lib/*.js onboarding-schema.js; do node --check "$file"; done

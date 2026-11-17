@@ -22,3 +22,9 @@ test('requires the selected nutrition and allergy follow-ups',()=>{
  assert.throws(()=>validate({...fixture(),allergyTypes:['Keine','Soja']}));
  assert.equal(validate({...fixture(),allergyTypes:['Eigene ergänzen','Soja'],allergies:'Test'}).allergies,'Test');
 });
+
+test('requires membership terms acceptance',()=>{
+ assert.throws(()=>validate({...fixture(),termsAccepted:false}),/termsAccepted/);
+ assert.throws(()=>validate({...fixture(),termsAccepted:undefined}),/termsAccepted/);
+ assert.equal(validate(fixture()).termsAccepted,true);
+});
