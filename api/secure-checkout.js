@@ -1,13 +1,22 @@
 const { createHmac } = require('node:crypto');
 const Stripe = require('stripe');
-const { validate, db, env, config, reply, encryptHealthData, UUID, CONSENT_VERSION, InvalidRequest } = require('../lib/onboarding-server');
+const { validate, db, checkoutConfig, reply, encryptHealthData, UUID, CONSENT_VERSION, InvalidRequest } = require('../lib/onboarding-server');
 
 module.exports = async function (req, res) {
+  if (req.method === 'GET') {
+    if (process.env.PULSE_SECURE_ONBOARDING_ENABLED !== 'true') return reply(res, 200, { available: false });
+    try {
+      checkoutConfig();
+      return reply(res, 200, { available: true });
+    } catch {
+      return reply(res, 200, { available: false });
+    }
+  }
   if (req.method !== 'POST') return reply(res, 405, { error: 'Method not allowed' });
   if (process.env.PULSE_SECURE_ONBOARDING_ENABLED !== 'true') return reply(res, 503, { error: 'Checkout not enabled' });
 
   try {
-    const { stripeKey, mode, price, tenant, origin } = config();
+    const { stripeKey, mode, price, tenant, origin, encryptionKey } = checkoutConfig();
     if (req.headers.origin !== origin) return reply(res, 403, { error: 'Invalid origin' });
     if (!/^application\/json(?:;|$)/i.test(req.headers['content-type'] || '')) {
       return reply(res, 415, { error: 'JSON required' });
@@ -19,18 +28,10 @@ module.exports = async function (req, res) {
     if (consentVersion !== CONSENT_VERSION || typeof attemptId !== 'string' || !UUID.test(attemptId)
       || !['de', 'en', 'fr', 'it', 'es'].includes(locale)) throw new InvalidRequest('Invalid checkout request');
     const answers = validate(rawAnswers);
-    const key = env('PULSE_HEALTH_DATA_KEY');
-    const fingerprint = createHmac('sha256', key).update(JSON.stringify([answers, locale, mode, tenant, price, origin, consentVersion])).digest('hex');
+    const fingerprint = createHmac('sha256', encryptionKey).update(JSON.stringify([answers, locale, mode, tenant, price, origin, consentVersion])).digest('hex');
     const stripe = new Stripe(stripeKey, { maxNetworkRetries: 1, timeout: 8000 });
-    if (mode === 'live') {
-      const webhookSecret = env('PULSE_STRIPE_LIVE_WEBHOOK_SECRET');
-      if (!webhookSecret.startsWith('whsec_') || webhookSecret === process.env.PULSE_STRIPE_WEBHOOK_SECRET) {
-        throw new Error('Live Stripe webhook is not configured separately from sandbox');
-      }
-      ['PULSE_NOTIFY_RESEND_API_KEY', 'PULSE_NOTIFY_FROM', 'PULSE_NOTIFY_TO'].forEach(env);
-    }
     const source = req.headers['x-vercel-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
-    const bucket = createHmac('sha256', key).update(`checkout-ip:${source}`).digest('hex');
+    const bucket = createHmac('sha256', encryptionKey).update(`checkout-ip:${source}`).digest('hex');
     const allowed = await db('rpc/pulse_allow_checkout', '', 'POST', { p_bucket: bucket });
     if (!allowed) return reply(res, 429, { error: 'Too many checkout attempts' });
 

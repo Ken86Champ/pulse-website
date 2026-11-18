@@ -28,3 +28,12 @@ test('requires membership terms acceptance',()=>{
  assert.throws(()=>validate({...fixture(),termsAccepted:undefined}),/termsAccepted/);
  assert.equal(validate(fixture()).termsAccepted,true);
 });
+
+test('requires customers to be at least 18 in Switzerland',()=>{
+ const {latestEligibleBirthDate}=require('../onboarding-schema');
+ assert.equal(latestEligibleBirthDate(new Date('2026-11-17T23:30:00Z')),'2008-11-18');
+ const today=new Date().toISOString().slice(0,10);
+ assert.throws(()=>validate({...fixture(),birthDate:today}),/birthDate/);
+ const latest=latestEligibleBirthDate();
+ assert.equal(validate({...fixture(),birthDate:latest}).birthDate,latest);
+});
