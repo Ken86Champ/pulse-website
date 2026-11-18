@@ -3,6 +3,7 @@ const Stripe = require('stripe');
 const { validate, db, checkoutConfig, reply, encryptHealthData, UUID, CONSENT_VERSION, InvalidRequest } = require('../lib/onboarding-server');
 
 module.exports = async function (req, res) {
+  let stage = 'request';
   if (req.method === 'GET') {
     if (process.env.PULSE_SECURE_ONBOARDING_ENABLED !== 'true') return reply(res, 200, { available: false });
     try {
@@ -32,9 +33,11 @@ module.exports = async function (req, res) {
     const stripe = new Stripe(stripeKey, { maxNetworkRetries: 1, timeout: 8000 });
     const source = req.headers['x-vercel-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
     const bucket = createHmac('sha256', encryptionKey).update(`checkout-ip:${source}`).digest('hex');
+    stage = 'rate-limit';
     const allowed = await db('rpc/pulse_allow_checkout', '', 'POST', { p_bucket: bucket });
     if (!allowed) return reply(res, 429, { error: 'Too many checkout attempts' });
 
+    stage = 'price';
     const productPrice = await stripe.prices.retrieve(price);
     if (!productPrice.active || productPrice.livemode !== (mode === 'live') || productPrice.currency !== 'chf'
         || productPrice.unit_amount !== 9800 || productPrice.recurring?.interval !== 'month'
@@ -42,6 +45,7 @@ module.exports = async function (req, res) {
       throw new Error('Configured Stripe price is not an active CHF 98 monthly price');
     }
 
+    stage = 'pending';
     const pending = await db('pulse_checkout_pending',
       `select=attempt_fingerprint,status,stripe_checkout_session_id&id=eq.${attemptId}`);
     if (pending[0] && (pending[0].attempt_fingerprint !== fingerprint || pending[0].status !== 'awaiting_payment')) {
@@ -49,6 +53,7 @@ module.exports = async function (req, res) {
     }
 
     const cipher = encryptHealthData(answers, attemptId);
+    stage = 'stripe-session';
     const session = pending[0]
       ? await stripe.checkout.sessions.retrieve(pending[0].stripe_checkout_session_id)
       : await stripe.checkout.sessions.create({
@@ -67,6 +72,7 @@ module.exports = async function (req, res) {
       return reply(res, 409, { error: 'Checkout attempt no longer available' });
     }
     if (!pending[0]) {
+      stage = 'save';
       await db('rpc/pulse_save_checkout', '', 'POST', {
         p_id: attemptId, p_tenant: tenant, p_email: answers.email, p_session: session.id,
         p_answers: cipher, p_consent: consentVersion, p_fingerprint: fingerprint
@@ -76,7 +82,7 @@ module.exports = async function (req, res) {
   } catch (error) {
     if (error instanceof InvalidRequest) return reply(res, 400, { error: error.message });
     if (error.type === 'StripeIdempotencyError') return reply(res, 409, { error: 'Checkout attempt in progress or already used' });
-    console.error('PULSE checkout unavailable', error.type || error.name);
+    console.error('PULSE checkout unavailable', stage, error.type || error.name, error.statusCode || '');
     return reply(res, 503, { error: 'Checkout temporarily unavailable' });
   }
 };
