@@ -15,11 +15,14 @@ module.exports = async function(req,res){
       if(!current.url.startsWith(origin+'/api/stripe/webhook?x-vercel-protection-bypass=')) return res.status(409).json({error:'Unexpected webhook state'});
       await stripe.webhookEndpoints.update(ID,{url:PUBLIC});
     }
-    let payment;
-    if(req.query.session==='cs_test_a04ZzEMEsPG8EGL7VbtjY0DJeG4WGkmTV4h1wQrLTWWNXm10H150E58VVd'){
+    let payment,events;
+    const sessions=['cs_test_a04ZzEMEsPG8EGL7VbtjY0DJeG4WGkmTV4h1wQrLTWWNXm10H150E58VVd','cs_test_a0y1bUvFSJ672o3rlNuFpSRSnozqbO1gvDVk1XjlrCAvwQQRsiXK4hppD4'];
+    if(sessions.includes(req.query.session)){
       const s=await stripe.checkout.sessions.retrieve(req.query.session);
       payment={status:s.status,payment_status:s.payment_status,mode:s.mode,livemode:s.livemode,has_subscription:Boolean(s.subscription)};
+      const list=await stripe.events.list({types:['checkout.session.completed'],limit:20});
+      events=list.data.filter(e=>e.data.object.id===s.id).map(e=>({id:e.id,type:e.type,pending_webhooks:e.pending_webhooks,created:e.created}));
     }
-    return res.status(200).json({webhookUrl:(req.query.op==='point'?target:req.query.op==='restore'?PUBLIC:current.url).split('?')[0],status:current.status,payment,automationBypassConfigured:Boolean(process.env.VERCEL_AUTOMATION_BYPASS_SECRET)});
+    return res.status(200).json({webhookUrl:(req.query.op==='point'?target:req.query.op==='restore'?PUBLIC:current.url).split('?')[0],status:current.status,payment,events,automationBypassConfigured:Boolean(process.env.VERCEL_AUTOMATION_BYPASS_SECRET)});
   }catch(e){console.error('QA webhook maintenance failed',e.type||e.name,e.statusCode||'');return res.status(503).json({error:'QA maintenance failed'});}
 };
