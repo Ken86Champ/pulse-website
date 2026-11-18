@@ -1,0 +1,27 @@
+name: PULSE Secure Onboarding Checks
+on:
+  push:
+    branches: [pulse-secure-onboarding-v1]
+  pull_request:
+    paths:
+      - 'api/**'
+      - 'lib/**'
+      - 'tests/**'
+      - 'onboarding.html'
+      - 'onboarding-schema.js'
+      - 'package-lock.json'
+      - '.github/workflows/pulse-secure-checks.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --test tests/*.test.js
+      - run: |
+          for file in api/*.js api/stripe/*.js lib/*.js onboarding-schema.js; do node --check "$file"; done

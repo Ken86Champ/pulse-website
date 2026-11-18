@@ -1,0 +1,15 @@
+const assert = require('node:assert/strict');
+const crypto = require('node:crypto');
+const { encryptHealthData, decryptHealthData } = require('../lib/health-encryption');
+process.env.PULSE_HEALTH_DATA_KEY = crypto.randomBytes(32).toString('base64');
+const recordId = crypto.randomUUID();
+const sensitive = { medication: 'Test medicine', surgery: 'None', heart: 'No' };
+const a = encryptHealthData(sensitive, recordId);
+const b = encryptHealthData(sensitive, recordId);
+assert.notEqual(a.ciphertext, b.ciphertext, 'Encryption must be randomized');
+assert.deepEqual(decryptHealthData(a, recordId), sensitive);
+assert.throws(() => decryptHealthData(a, crypto.randomUUID()), 'Cross-record decrypt must fail');
+assert.throws(() => decryptHealthData({...a, ciphertext: a.ciphertext.replace(/^./, a.ciphertext[0] === 'A' ? 'B' : 'A')}, recordId), 'Tampering must fail');
+delete process.env.PULSE_HEALTH_DATA_KEY;
+assert.throws(() => encryptHealthData(sensitive, recordId), 'Missing key must fail closed');
+console.log('Health encryption tests passed');
