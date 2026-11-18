@@ -1,6 +1,7 @@
 const Stripe = require('stripe');
 const ID='we_1UYUS5RmmPGdnm9MXNAVu1SO';
 const PUBLIC='https://pulse-website-xi.vercel.app/api/stripe/webhook';
+const EVENT='evt_1UdArLRmmPGdnm9M4FXSMyOi';
 module.exports = async function(req,res){
   if(req.method!=='GET'||process.env.VERCEL_ENV!=='preview'||process.env.PULSE_STRIPE_MODE!=='test') return res.status(404).end();
   try {
@@ -14,6 +15,14 @@ module.exports = async function(req,res){
     } else if(req.query.op==='restore') {
       if(!current.url.startsWith(origin+'/api/stripe/webhook?x-vercel-protection-bypass=')) return res.status(409).json({error:'Unexpected webhook state'});
       await stripe.webhookEndpoints.update(ID,{url:PUBLIC});
+    } else if(req.query.op==='replay') {
+      if(!process.env.VERCEL_AUTOMATION_BYPASS_SECRET||!process.env.PULSE_STRIPE_WEBHOOK_SECRET||!current.url.startsWith(origin+'/api/stripe/webhook?')) return res.status(409).json({error:'Unexpected webhook state'});
+      const event=await stripe.events.retrieve(EVENT);
+      if(event.type!=='checkout.session.completed'||event.data.object.id!=='cs_test_a0y1bUvFSJ672o3rlNuFpSRSnozqbO1gvDVk1XjlrCAvwQQRsiXK4hppD4') return res.status(409).json({error:'Unexpected event'});
+      const payload=JSON.stringify(event);
+      const signature=Stripe.webhooks.generateTestHeaderString({payload,secret:process.env.PULSE_STRIPE_WEBHOOK_SECRET});
+      const response=await fetch(target,{method:'POST',headers:{'stripe-signature':signature,'content-type':'application/json'},body:payload});
+      return res.status(200).json({replayStatus:response.status,webhookResult:await response.json().catch(()=>({error:'non-json'}))});
     }
     let payment,events;
     const sessions=['cs_test_a04ZzEMEsPG8EGL7VbtjY0DJeG4WGkmTV4h1wQrLTWWNXm10H150E58VVd','cs_test_a0y1bUvFSJ672o3rlNuFpSRSnozqbO1gvDVk1XjlrCAvwQQRsiXK4hppD4'];
