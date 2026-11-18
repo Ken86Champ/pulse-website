@@ -58,6 +58,7 @@ module.exports = async function (req, res) {
       ? await stripe.checkout.sessions.retrieve(pending[0].stripe_checkout_session_id)
       : await stripe.checkout.sessions.create({
         mode: 'subscription',
+        branding_settings: { display_name: 'PULSE Fitness' },
         line_items: [{ price, quantity: 1 }],
         adaptive_pricing: { enabled: false },
         customer_email: answers.email,
