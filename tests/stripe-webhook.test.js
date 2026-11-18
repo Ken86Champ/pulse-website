@@ -116,6 +116,15 @@ test('existing webhook validates signed sandbox events and only provisions a pai
   assert.ok(row.confirmed_at);
   assert.equal(emails.filter(email => email.key.startsWith('pulse-coaching-setup/')).length, 1);
 
+  row.confirmed_at = row.notified_at = null;
+  emails.length = 0;
+  process.env.PULSE_NOTIFY_RESEND_API_KEY = '';
+  assert.equal((await deliver()).code, 200);
+  assert.equal(emails.length, 0);
+  assert.equal(row.confirmed_at, null);
+  assert.equal(row.notified_at, null);
+  assert.equal(rpc.at(-1).p_subscription, checkout.subscription);
+
 });
 
 test('live webhook keeps the existing sandbox destination active and rejects crossed signatures', async () => {

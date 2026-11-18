@@ -2,7 +2,7 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const checkout = require('../api/secure-checkout');
 
-test('public checkout stays closed until the matching Stripe and email configuration is ready', async () => {
+test('public checkout needs matching Stripe configuration and supports optional mail delivery', async () => {
   const settings = {
     PULSE_SECURE_ONBOARDING_ENABLED: 'false',
     VERCEL_ENV: 'production',
@@ -45,6 +45,8 @@ test('public checkout stays closed until the matching Stripe and email configura
       PULSE_STRIPE_SECRET_KEY: 'sk_live_fixture',
       PULSE_STRIPE_LIVE_WEBHOOK_SECRET: 'whsec_live'
     });
+    assert.equal(await availability(), true);
+    process.env.PULSE_NOTIFY_RESEND_API_KEY = 're_fixture';
     assert.equal(await availability(), false);
     Object.assign(process.env, {
       PULSE_NOTIFY_RESEND_API_KEY: 're_fixture',
