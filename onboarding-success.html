@@ -17,7 +17,7 @@
     <h1>PULSE 💜</h1>
     <p id="status" role="status" aria-live="polite">Wir prüfen deine Zahlung …</p>
     <p><a href="/agb.html">AGB</a> · <a href="/abo-kuendigen.html">Abo kündigen</a> · <a href="mailto:hello.pulse.coach@gmail.com?subject=PULSE%20Bestellung">Kontakt</a></p>
-    <a id="home" href="/">Zur Startseite</a>
+    <button id="portal" type="button" hidden style="background:#643cf0;color:#fff;border:0;border-radius:10px;padding:13px 18px;font:inherit;font-weight:700;cursor:pointer;margin:12px 0">Mitgliedschaft verwalten</button>\n    <p id="portal-error" role="alert" style="color:#9c2330"></p>\n    <a id="home" href="/">Zur Startseite</a>
   </main>
   <script>
     (async () => {
@@ -35,14 +35,14 @@
       const [checking, paid, failed, pending, unknown, home] = translations[locale];
       document.documentElement.lang = locale;
       document.getElementById('home').textContent = home;
-      const status = document.getElementById('status');
+      const status = document.getElementById('status');\n      const portalButton=document.getElementById('portal');\n      portalButton.textContent=({de:'Mitgliedschaft verwalten',en:'Manage membership',fr:'Gérer mon abonnement',it:'Gestisci abbonamento',es:'Gestionar suscripción'})[locale];\n      portalButton.onclick=async()=>{portalButton.disabled=true;document.getElementById('portal-error').textContent='';try{const response=await fetch('/api/customer-portal',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:id})});const data=await response.json();if(!response.ok||!data.url||new URL(data.url).protocol!=='https:')throw Error('Unavailable');location.assign(data.url)}catch{document.getElementById('portal-error').textContent='Das Kundenportal ist gerade nicht erreichbar. Bitte nutze den Link «Abo kündigen».';portalButton.disabled=false}};
       status.textContent = checking;
       if (!id) { status.textContent = unknown; return; }
       for (let attempt = 0; attempt < 10; attempt++) {
         try {
           const response = await fetch('/api/checkout-status?session_id=' + encodeURIComponent(id), { cache: 'no-store' });
           const data = await response.json();
-          if (data.status === 'coaching_setup_required') { status.textContent = paid; return; }
+          if (data.status === 'coaching_setup_required') { status.textContent = paid; portalButton.hidden=false; return; }
           if (['cancelled', 'payment_failed'].includes(data.status)) { status.textContent = failed; return; }
           if (['invalid', 'not_found'].includes(data.status)) { status.textContent = unknown; return; }
         } catch {}
