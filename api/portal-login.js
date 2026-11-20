@@ -30,6 +30,11 @@ module.exports = function (req, res) {
     return res.end('Method not allowed');
   }
   const target = portalLoginUrl();
+  if (req.query?.check === '1') {
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.statusCode = 200;
+    return res.end(JSON.stringify({ available: Boolean(target) }));
+  }
   if (!target) console.error('PULSE portal login link missing or invalid');
   res.statusCode = 302;
   res.setHeader('Location', target || '/abo-kuendigen.html#anfrage');
