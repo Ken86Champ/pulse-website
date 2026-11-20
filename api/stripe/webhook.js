@@ -75,7 +75,7 @@ async function handler(req, res) {
   const stripe = secretKey && new Stripe(secretKey, { maxNetworkRetries: 1, timeout: 8000 });
   const secure = event.data.object.metadata?.pulse_flow === 'onboarding_v1';
   try {
-    if (secure || (event.type === 'customer.subscription.deleted' && process.env.PULSE_SECURE_ONBOARDING_ENABLED === 'true')) {
+    if (secure || (['customer.subscription.deleted', 'customer.subscription.updated'].includes(event.type) && process.env.PULSE_SECURE_ONBOARDING_ENABLED === 'true')) {
       if (process.env.PULSE_SECURE_ONBOARDING_ENABLED !== 'true') return reply(res, 503, { error: 'Checkout temporarily paused' });
       const { mode } = config();
       if (mode === 'live' && !liveWebhookSecret) return reply(res, 503, { error: 'Live webhook not configured' });
