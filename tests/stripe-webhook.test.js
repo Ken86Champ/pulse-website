@@ -101,7 +101,7 @@ test('existing webhook validates signed sandbox events and only provisions a pai
   assert.ok(emails.every(email => email.data.to[0] === 'qa-operator@example.com'));
   const confirmation = emails.find(email => email.key.startsWith('pulse-order-confirmation/'));
   assert.ok(confirmation.data.text.includes('https://pulse.example.com/agb.html'));
-  assert.ok(confirmation.data.text.includes('https://pulse.example.com/mitgliedschaft.html#kuendigen'));
+  assert.ok(confirmation.data.text.includes('https://pulse.example.com/abo-kuendigen.html'));
   assert.deepEqual(emails.map(email => email.key), [
     `pulse-order-confirmation/${customerId}`, `pulse-coaching-setup/${customerId}`
   ]);
