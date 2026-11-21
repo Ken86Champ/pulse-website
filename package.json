@@ -4,5 +4,9 @@
   "private": true,
   "dependencies": {
     "stripe": "20.4.1"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "build": "node scripts/build-public.js"
   }
 }

@@ -47,7 +47,7 @@ test('existing webhook validates signed sandbox events and only provisions a pai
     PULSE_B2C_TENANT_ID: attempt,
     PULSE_ONBOARDING_SUPABASE_URL: 'https://db.example.com',
     PULSE_ONBOARDING_SUPABASE_SECRET_KEY: 'sb_secret_fixture',
-    PULSE_NOTIFY_RESEND_API_KEY: 're_fixture',
+    PULSE_NOTIFY_RESEND_API_KEY: 're_fixture', // Legacy config must never cause delivery.
     PULSE_NOTIFY_FROM: 'PULSE <test@example.com>',
     PULSE_NOTIFY_TO: 'qa-operator@example.com'
   });
@@ -97,33 +97,9 @@ test('existing webhook validates signed sandbox events and only provisions a pai
   assert.equal((await deliver()).code, 200);
   assert.equal((await deliver({ type: 'checkout.session.async_payment_succeeded' })).code, 200);
   assert.equal(rpc.at(-1).p_subscription, checkout.subscription);
-  assert.equal(emails.length, 2);
-  assert.ok(emails.every(email => email.data.to[0] === 'qa-operator@example.com'));
-  const confirmation = emails.find(email => email.key.startsWith('pulse-order-confirmation/'));
-  assert.ok(confirmation.data.text.includes('https://pulse.example.com/agb.html'));
-  assert.ok(confirmation.data.text.includes('https://pulse.example.com/abo-kuendigen.html'));
-  assert.deepEqual(emails.map(email => email.key), [
-    `pulse-order-confirmation/${customerId}`, `pulse-coaching-setup/${customerId}`
-  ]);
-  row.confirmed_at = row.notified_at = null;
-  emails.length = 0;
-  failBuyerEmail = true;
-  assert.equal((await deliver()).code, 503);
-  assert.equal(row.confirmed_at, null);
-  assert.ok(row.notified_at);
-  failBuyerEmail = false;
-  assert.equal((await deliver()).code, 200);
-  assert.ok(row.confirmed_at);
-  assert.equal(emails.filter(email => email.key.startsWith('pulse-coaching-setup/')).length, 1);
-
-  row.confirmed_at = row.notified_at = null;
-  emails.length = 0;
-  process.env.PULSE_NOTIFY_RESEND_API_KEY = '';
-  assert.equal((await deliver()).code, 200);
   assert.equal(emails.length, 0);
   assert.equal(row.confirmed_at, null);
   assert.equal(row.notified_at, null);
-  assert.equal(rpc.at(-1).p_subscription, checkout.subscription);
 
 });
 

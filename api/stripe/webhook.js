@@ -1,7 +1,7 @@
 const Stripe = require('stripe');
 const { randomBytes, createHash } = require('node:crypto');
 const { db, config, reply } = require('../../lib/onboarding-server');
-const { fulfill } = require('../../lib/pulse-fulfillment');
+const { fulfill, LIFECYCLE_EVENTS, RISK_EVENTS } = require('../../lib/pulse-fulfillment');
 
 async function provision(session, stripe) {
   const tenant = process.env.PULSE_ONBOARDING_TENANT_ID;
@@ -75,7 +75,7 @@ async function handler(req, res) {
   const stripe = secretKey && new Stripe(secretKey, { maxNetworkRetries: 1, timeout: 8000 });
   const secure = event.data.object.metadata?.pulse_flow === 'onboarding_v1';
   try {
-    if (secure || (['customer.subscription.deleted', 'customer.subscription.updated'].includes(event.type) && process.env.PULSE_SECURE_ONBOARDING_ENABLED === 'true')) {
+    if (secure || ([...LIFECYCLE_EVENTS, ...RISK_EVENTS, 'customer.updated'].includes(event.type) && process.env.PULSE_SECURE_ONBOARDING_ENABLED === 'true')) {
       if (process.env.PULSE_SECURE_ONBOARDING_ENABLED !== 'true') return reply(res, 503, { error: 'Checkout temporarily paused' });
       const { mode } = config();
       if (mode === 'live' && !liveWebhookSecret) return reply(res, 503, { error: 'Live webhook not configured' });

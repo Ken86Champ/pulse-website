@@ -1,6 +1,6 @@
 'use strict';
 
-const consentVersion='pulse-privacy-terms-2026-11-21-intl-v1';
+const consentVersion='pulse-privacy-terms-2026-11-21-dach-v2';
 function latestEligibleBirthDate(now = new Date()) {
   const localDate = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit'

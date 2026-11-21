@@ -2,7 +2,7 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const checkout = require('../api/secure-checkout');
 
-test('public checkout needs matching Stripe configuration and supports optional mail delivery', async () => {
+test('public checkout needs matching Stripe configuration and ignores retired mail delivery settings', async () => {
   const settings = {
     PULSE_SECURE_ONBOARDING_ENABLED: 'false',
     VERCEL_ENV: 'production',
@@ -47,7 +47,7 @@ test('public checkout needs matching Stripe configuration and supports optional 
     });
     assert.equal(await availability(), true);
     process.env.PULSE_NOTIFY_RESEND_API_KEY = 're_fixture';
-    assert.equal(await availability(), false);
+    assert.equal(await availability(), true);
     Object.assign(process.env, {
       PULSE_NOTIFY_RESEND_API_KEY: 're_fixture',
       PULSE_NOTIFY_FROM: 'PULSE <sender@example.com>',
