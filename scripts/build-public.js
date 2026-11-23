@@ -8,4 +8,5 @@ for (const file of readdirSync(root)) {
     copyFileSync(join(root, file), join(output, file));
 }
 cpSync(join(root, 'assets'), join(output, 'assets'), { recursive: true });
+for (const file of ['robots.txt','sitemap.xml']) if (require('node:fs').existsSync(join(root,file))) copyFileSync(join(root,file),join(output,file));
 console.log('Public assets built; server libraries, tests, SQL and source documents excluded.');

@@ -33,7 +33,7 @@ h1{font-size:clamp(34px,5vw,54px);line-height:1.09;letter-spacing:-.045em;margin
 #error{color:#aa243f;font-size:14px;line-height:1.5;margin-top:14px}
 .foot{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;margin-top:27px;font-size:13px;color:#81788f}.foot a{color:#736982}
 @media(max-width:650px){.shell{padding:23px 16px 45px}.topbar{margin-bottom:43px}.hero{margin-bottom:28px}.hero p{font-size:15px}.panel-head,.body{padding:22px}.steps{grid-template-columns:1fr}.step{padding:13px 15px}.actions{flex-direction:column;align-items:stretch}.primary,.secondary{text-align:center;width:100%}}
-</style></head>
+</style><meta name="description" content="Zahlungsstatus und nächste Schritte für deine PULSE Personal Mitgliedschaft."><link rel="canonical" href="https://pulse-website-xi.vercel.app/onboarding-success.html"><link rel="stylesheet" href="launch-quality.css"></head>
 <body><div class="shell">
 <header class="topbar"><a href="/" class="brand" aria-label="PULSE Startseite"><span class="brand-badge" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M2 16h7l4-8 5 16 4-8h8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"/></svg></span><span>PULSE</span></a><a class="back" href="/">Zur Website</a></header>
 <main>
@@ -76,19 +76,19 @@ h1{font-size:clamp(34px,5vw,54px);line-height:1.09;letter-spacing:-.045em;margin
    const data=await response.json();
    if(!response.ok||!data.url||new URL(data.url).protocol!=='https:')throw Error('Portal unavailable');
    location.assign(data.url);
-  }catch{error.textContent='Das Kundenportal ist momentan nicht erreichbar. Nutze bitte «Abo kündigen» im Footer.';portal.disabled=false;}
+  }catch{error.textContent=lang==='en'?'The customer portal is temporarily unavailable. Please use Cancel subscription in the footer.':'Das Kundenportal ist momentan nicht erreichbar. Nutze bitte «Abo kündigen» im Footer.';portal.disabled=false;}
  });
- if(!id||!/^cs_(live|test)_[A-Za-z0-9]+$/.test(id)){headline.textContent=t[6];intro.textContent=t[7];state.textContent='Nicht bestätigt';status.textContent='Bitte öffne den Link aus deiner Stripe-Zahlungsbestätigung.';return;}
+ if(!id||!/^cs_(live|test)_[A-Za-z0-9]+$/.test(id)){headline.textContent=t[6];intro.textContent=t[7];state.textContent=lang==='en'?'Not confirmed':'Nicht bestätigt';status.textContent=lang==='en'?'Please open the link from your Stripe payment confirmation.':'Bitte öffne den Link aus deiner Stripe-Zahlungsbestätigung.';return;}
  for(let i=0;i<10;i++){
   try{
    const r=await fetch('/api/checkout-status?session_id='+encodeURIComponent(id),{cache:'no-store'}),data=await r.json();
    if(data.status==='coaching_setup_required'){
     headline.textContent=t[0];intro.textContent=t[1];state.textContent=t[2];status.textContent=t[3];portal.hidden=false;const confirmation=document.getElementById('confirmation');confirmation.href='/api/order-confirmation?session_id='+encodeURIComponent(id);confirmation.hidden=false;document.getElementById('steps').hidden=false;return;
    }
-   if(['cancelled','payment_failed','invalid','not_found'].includes(data.status)){headline.textContent=t[6];intro.textContent=t[7];state.textContent='Nicht bestätigt';status.textContent=t[7];return;}
+   if(['cancelled','payment_failed','invalid','not_found'].includes(data.status)){headline.textContent=t[6];intro.textContent=t[7];state.textContent=lang==='en'?'Not confirmed':'Nicht bestätigt';status.textContent=t[7];return;}
   }catch{}
   await new Promise(resolve=>setTimeout(resolve,2500));
  }
- headline.textContent=t[4];intro.textContent=t[5];state.textContent='In Prüfung';status.textContent=t[5];
+ headline.textContent=t[4];intro.textContent=t[5];state.textContent=lang==='en'?'Under review':'In Prüfung';status.textContent=t[5];
 })();
 </script></body></html>
