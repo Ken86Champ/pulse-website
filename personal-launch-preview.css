@@ -1,5 +1,5 @@
 /* Hallmark · v2.0.0 · built: the project · redesign: polish · brand: original PULSE violet by explicit user direction · signature: immersive chat-to-app coaching day */
-/* Source review: original PULSE headlines restored; duplicate copy and competing purchase actions removed. New browser review is pending. */
+/* Source review: original PULSE headlines restored; duplicate copy and competing purchase actions removed. Browser review: DE/EN at eight widths; independent finish review passed after footer contrast correction. */
 /* User direction takes precedence over theme rules: preserve the violet palette, original layout, product mockups and immersive motion. */
 :root{--pulse-ink:#191329;--pulse-muted:#625b73;--pulse-brand:#693af0;--pulse-brand-soft:#f3efff;--pulse-ring:#9d7bff;--pulse-white:#fffefd;--pulse-line:#e4ddf3;--pulse-dark:#160f29}
 html,body{overflow-x:clip!important}html{scroll-padding-top:100px}
@@ -97,3 +97,33 @@ html,body{overflow-x:clip!important}html{scroll-padding-top:100px}
 .pulse-results-preview .launch-flex>div>h2{margin-top:0}
 .pulse-results-preview .pulse-assistant-core small,.pulse-results-preview .xp-kicker,.pulse-results-preview .launch-chip,.pulse-results-preview .app-download-eyebrow,.pulse-results-preview .privacy-eyebrow{letter-spacing:0!important;text-transform:none!important}
 @media(max-width:40rem){.pulse-results-preview .hero .float-a{top:auto}.pulse-results-preview .hero-copy .hero-actions .btn.light{padding-inline:10px}.pulse-results-preview .consumer-cta .launch-mainbutton{width:100%;max-width:320px}}
+
+/* Restored app access section: available platforms are informational until URLs exist. */
+.pulse-results-preview .app-download-stores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:500px;margin:24px 0 20px}
+.pulse-results-preview .app-store-badge{display:flex;align-items:center;gap:14px;min-width:0;min-height:112px;padding:18px;border:1px solid #796a99;border-radius:14px;background:#ffffff0a;cursor:default;opacity:1}
+.pulse-results-preview .app-store-badge>svg{flex-shrink:0;color:#d9d0ff}
+.pulse-results-preview .app-store-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.pulse-results-preview .app-store-copy small{font-size:12px;letter-spacing:0;text-transform:none;line-height:1.4;color:#d4cce3}
+.pulse-results-preview .app-store-copy strong{font-size:19px;line-height:1.3;color:#fff}
+.pulse-results-preview .app-store-status{font-size:12px;line-height:1.4;color:#d4cce3}
+.pulse-results-preview .app-store-release-note{max-width:52ch;margin:14px 0 0;color:#d4cce3;font-size:13px;line-height:1.6}
+.pulse-results-preview .app-download-note{margin-top:20px;max-width:56ch}
+.pulse-results-preview .app-download-eyebrow{font-size:13px;line-height:1.5}
+@media(max-width:40rem){.pulse-results-preview .app-download-stores{gap:10px}.pulse-results-preview .app-store-badge{padding:14px;gap:10px;min-height:120px}.pulse-results-preview .app-store-badge>svg{width:20px}.pulse-results-preview .app-store-copy strong{font-size:17px}.pulse-results-preview .app-download-lead{font-size:16px;line-height:1.7}}
+@media(max-width:23rem){.pulse-results-preview .app-download-stores{grid-template-columns:minmax(0,1fr)}.pulse-results-preview .app-store-badge{min-height:96px}}
+
+/* Final observed spacing corrections; sample product UI and original headlines stay. */
+body.pulse-results-preview #erfahrung .pulse-proof-top{margin-bottom:12px!important;gap:0!important}
+body.pulse-results-preview #erfahrung .pulse-proof-top h2{margin:0!important}
+body.pulse-results-preview #erfahrung .pulse-experience-pagination:empty{display:none!important}
+.pulse-results-preview .float-card .float-icon{display:grid;place-items:center}
+.pulse-results-preview .feature-float .float-icon svg{display:block;width:20px;height:20px}
+.pulse-results-preview .float-play{display:grid;place-items:center}
+.pulse-results-preview .privacy-alpine-perk>span:has(svg){display:grid;place-items:center}
+body.pulse-results-preview .trustbar-title,body.pulse-results-preview .trust-label{letter-spacing:0!important;text-transform:none!important}
+@media(max-width:40rem){.pulse-results-preview .hero .float-a,.pulse-results-preview .hero .float-b{min-height:80px;align-self:stretch}.pulse-results-preview .hero .float-b b{max-width:14ch}}
+
+:root{--pulse-footer-link:#e1d8ff;--pulse-footer-hover:#fff}
+body.pulse-results-preview footer a{color:var(--pulse-footer-link)!important}
+body.pulse-results-preview footer a:hover{color:var(--pulse-footer-hover)!important;text-decoration:underline;text-underline-offset:4px}
+body.pulse-results-preview footer .brand{color:var(--pulse-footer-hover)!important}
