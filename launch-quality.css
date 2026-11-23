@@ -5,3 +5,12 @@ html,body{overflow-x:clip}h1,h2,h3{min-width:0;overflow-wrap:break-word}img,vide
 input,select,textarea,button{font:inherit}input,select,textarea{max-width:100%;min-width:0}a,button{-webkit-tap-highlight-color:transparent}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media(max-width:375px){.brand{letter-spacing:.02em}main{overflow-wrap:anywhere}.shell{min-width:0}}
+/* Brand continuity through the questionnaire, support and contract pages. */
+body{background:var(--quality-paper);color:var(--quality-ink)}
+.brand-badge,.logo{background:var(--quality-focus)!important;box-shadow:none!important}
+button.primary,a.primary,.button{background:var(--quality-focus)!important;color:#fffefd!important;box-shadow:none!important}
+button.primary:hover,a.primary:hover,.button:hover{filter:brightness(.94)}
+.review,.card,.panel{box-shadow:none;border-radius:12px;background:#fffefd}
+input[type=checkbox]{accent-color:var(--quality-focus)}
+.chip.selected,.chip:has(input:checked){background:#e5eee5!important;border-color:var(--quality-focus)!important;color:var(--quality-ink)!important}
+.eyebrow{letter-spacing:normal;text-transform:none}h1 em{font-style:normal;color:inherit}
