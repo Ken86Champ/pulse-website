@@ -1,0 +1,5 @@
+/* Preview: only heading weight changes. Original family, size, spacing and media are retained. */
+body.page-consumer.pulse-v4 main#top .hero-copy h1,
+body.page-consumer.pulse-v4 main#top :is(.what-copy,.xp-heading,.pulse-proof-top,.premium-app-copy,.privacy-alpine-copy,.launch-flex,.sec-head,.v4-final-copy) h2,
+body.page-consumer.pulse-v4 main#top :is(.launch-offer,.v4-app-access) h3,
+body.page-consumer.pulse-v4 main#top :is(h1,h2,h3) :is(em,span,strong){font-weight:900!important;-webkit-text-stroke:.006em currentColor}
