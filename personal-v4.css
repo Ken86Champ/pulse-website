@@ -298,3 +298,15 @@ body.pulse-v4 .v4-app-access .app-store-copy{min-width:0}
 body.pulse-v4 .v4-app-access .app-store-badge>svg{color:var(--pulse-brand);flex-shrink:0}
 @media(max-width:60rem){body.pulse-v4 .premium-app-grid{gap:32px}body.pulse-v4 .premium-app-copy,body.pulse-v4 .premium-showcase,body.pulse-v4 .v4-app-access{grid-column:1;grid-row:auto;align-self:auto}body.pulse-v4 .premium-app-copy{order:0}body.pulse-v4 .premium-showcase{order:1}body.pulse-v4 .v4-app-access{order:2;width:100%;margin-inline:auto}}
 @media(max-width:40rem){body.pulse-v4 .v4-app-access .app-store-badge{padding:12px;gap:8px}body.pulse-v4 .v4-app-access .app-store-copy strong{font-size:16px}body.pulse-v4 .v4-app-access .app-store-badge>svg{width:18px}}
+
+/* Design-only refinement. Marketing copy sourced from the original homepage. */
+body.pulse-v4{--v4-control-radius:12px;--v4-card-radius:20px;--v4-soft-shadow:0 12px 30px #3520570a}
+body.pulse-v4 .btn.primary,body.pulse-v4 .launch-mainbutton{background:var(--pulse-brand)!important;border-radius:var(--v4-control-radius)!important;box-shadow:var(--v4-soft-shadow)!important;font-weight:700}
+body.pulse-v4 .float-card,body.pulse-v4 .launch-offer,body.pulse-v4 .privacy-alpine-perk{border-radius:var(--v4-card-radius)!important;box-shadow:var(--v4-soft-shadow)!important}
+body.pulse-v4 .hero .float-a,body.pulse-v4 .hero .float-b{transform:none!important}
+body.pulse-v4 .hero .tinyline{display:none}
+body.pulse-v4 .pulse-price-positioning{font-size:16px;line-height:1.65;color:var(--v4-ink);margin:20px 0}
+body.pulse-v4 .hero-copy>p{max-width:53ch}body.pulse-v4 .hero-actions{margin-bottom:0}
+body.pulse-v4 #erfahrung .trust-items{width:min(1280px,calc(100% - 80px))!important;max-width:1280px!important;margin-inline:auto!important}
+@media(max-width:60rem){body.pulse-v4 #erfahrung .trust-items{width:calc(100% - 48px)!important}}
+@media(max-width:40rem){body.pulse-v4 #erfahrung .trust-items{width:calc(100% - 36px)!important}body.pulse-v4 .pulse-price-positioning{font-size:15px}}
