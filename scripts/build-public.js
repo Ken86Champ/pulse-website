@@ -4,7 +4,7 @@ const { join } = require('node:path');
 const root = join(__dirname, '..'), output = join(root, 'public');
 rmSync(output, { recursive: true, force: true }); mkdirSync(output);
 for (const file of readdirSync(root)) {
-  if (/\.(html|css)$/.test(file) || ['onboarding-schema.js', 'checkout-availability.js', 'support-form.js', 'acid-preview.js', 'partner-preview.js'].includes(file))
+  if (/\.(html|css)$/.test(file) || ['onboarding-schema.js', 'checkout-availability.js', 'support-form.js', 'acid-preview.js', 'partner-preview.js', 'blue-preview.js', 'blue-partner-preview.js'].includes(file))
     copyFileSync(join(root, file), join(output, file));
 }
 cpSync(join(root, 'assets'), join(output, 'assets'), { recursive: true });
