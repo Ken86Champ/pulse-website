@@ -45,3 +45,15 @@ body.pulse-v4 main#top #app .premium-showcase{grid-column:2;grid-row:1 / span 2}
 body.page-consumer.pulse-v4 main#top #erfahrung > .wrap{width:100%!important;max-width:none!important}
 body.page-consumer.pulse-v4 main#top #erfahrung .pulse-proof-top,
 body.page-consumer.pulse-v4 main#top #erfahrung .trustbar > .wrap{width:min(var(--restore-width),calc(100% - var(--restore-gutter)))!important;max-width:var(--restore-width)!important;margin-inline:auto!important}
+
+/* Final role audit: one narrative size, consistent gaps; product UI retains its own scale. */
+body.pulse-v4 main#top :is(.offer-hero-promise,.offer-origin p,.offer-price-anchor,.faq p,.v4-access-description){font-size:var(--restore-body)!important;line-height:1.65!important}
+body.pulse-v4 main#top :is(.what-wrap,.premium-app-grid,.launch-flex,.privacy-alpine-inner){gap:var(--restore-gap)!important}
+body.pulse-v4 main#top .premium-app-grid{min-height:0!important}
+body.pulse-v4 main#top :is(h2,h3){font-weight:800!important}
+body.pulse-v4 main#top #app .v4-app-access{padding:28px!important;border:1px solid #ded2ff!important;border-left:4px solid var(--restore-brand)!important;border-radius:20px;background:linear-gradient(135deg,#f4efff,#fcfaff);box-shadow:0 14px 40px #693af00b}
+body.pulse-v4 main#top .v4-access-label{display:block;color:var(--restore-brand);font-size:12px;letter-spacing:.12em;font-weight:800;margin-bottom:12px}
+body.pulse-v4 main#top .v4-app-access h3{margin:0 0 14px!important}
+body.pulse-v4 main#top .v4-access-description{color:var(--restore-ink);margin:0 0 16px}
+body.pulse-v4 main#top .v4-app-access .app-download-note{font-size:14px!important;line-height:1.6!important;margin:0;padding-top:16px;border-top:1px solid #ded2ff;max-width:none}
+@media(max-width:40rem){body.pulse-v4 main#top #app .v4-app-access{padding:22px!important}}

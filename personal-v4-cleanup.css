@@ -1,0 +1,21 @@
+/* Approved screenshot cleanup. The locked V4 font family and sizes are retained. */
+body.pulse-v4 main#top #datenschutz .privacy-alpine-copy h2{font-family:inherit!important}
+body.pulse-v4 main#top #start.v4-close{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 78% 46%,#52378e55,transparent 55%),linear-gradient(120deg,#18132d,#2c224c 65%,#211a38)!important}
+body.pulse-v4 main#top #start.v4-close:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(#b19ad507 1px,transparent 1px),linear-gradient(90deg,#b19ad507 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+body.pulse-v4 main#top #start .v4-final-action{display:grid!important;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:var(--restore-gap)!important;align-items:center;min-height:600px}
+body.pulse-v4 main#top #start .v4-final-copy{min-width:0;max-width:720px}
+body.pulse-v4 main#top #start .v4-final-copy h2 br{display:block!important}
+body.pulse-v4 main#top #start .v4-final-copy h2 span{color:#b29aff!important}
+body.pulse-v4 main#top #start .launch-lead{color:#dfd6f4!important;max-width:60ch;margin:26px 0 30px}
+body.pulse-v4 main#top #start .v4-start{width:auto;max-width:100%;margin:0;justify-self:start}
+body.pulse-v4 .v4-close-visual{position:relative;min-width:0;min-height:620px;display:grid;place-items:center}
+body.pulse-v4 .v4-close-device{position:relative;width:300px;aspect-ratio:258 / 520;border:8px solid #090812;border-radius:44px;padding:7px;background:#080711;box-shadow:0 28px 85px #0006,0 0 0 1px #ffffff33;transform:rotate(-5deg);overflow:hidden}
+body.pulse-v4 .v4-close-device img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:29px;background:white}
+body.pulse-v4 .v4-close-island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:78px;height:18px;background:#090812;border-radius:0 0 12px 12px;z-index:1}
+body.pulse-v4 .v4-close-card{position:absolute;right:0;bottom:65px;width:min(260px,65%);padding:22px;border:1px solid #bda8e447;border-radius:20px;background:#2b2245f5;box-shadow:0 18px 48px #0003;color:white}
+body.pulse-v4 .v4-close-card-label{display:flex;align-items:center;gap:6px;font-size:10px;line-height:1.5;letter-spacing:.08em;font-weight:700;color:#bda8ee;margin-bottom:12px}
+body.pulse-v4 .v4-close-card-label svg{width:18px;height:18px;flex-shrink:0}
+body.pulse-v4 .v4-close-card strong{display:block;font-size:20px;font-weight:700;line-height:1.25;letter-spacing:-.025em}
+body.pulse-v4 .v4-close-card small{display:block;font-size:13px;line-height:1.6;color:#d7cde8;margin-top:10px}
+@media(max-width:60rem){body.pulse-v4 main#top #start .v4-final-action{grid-template-columns:minmax(0,1fr);min-height:0}body.pulse-v4 .v4-close-visual{width:min(520px,100%);justify-self:center}}
+@media(max-width:40rem){body.pulse-v4 .v4-close-visual{min-height:530px}body.pulse-v4 .v4-close-device{width:240px;border-radius:40px}body.pulse-v4 .v4-close-card{width:min(220px,72%);bottom:30px;padding:18px}body.pulse-v4 .v4-close-card strong{font-size:18px}body.pulse-v4 .v4-close-card-label{font-size:9px}body.pulse-v4 main#top #start .v4-start{width:100%}}
