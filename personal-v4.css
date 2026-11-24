@@ -262,3 +262,39 @@ html.pulse-v4-page,body.pulse-v4{overflow-x:clip!important;overflow-y:visible!im
 body.pulse-v4 #live-erleben .xp-view-switch{display:none!important}
 
 body.pulse-v4 .difference-new,body.pulse-v4 .difference-new h3,body.pulse-v4 .difference-new li,body.pulse-v4 .difference-new strong{color:var(--v4-ink)!important}body.pulse-v4 .difference-new .difference-label{color:#6235bd!important}body.pulse-v4 .difference-new li:before{color:#6235bd!important}
+
+/* V4 refinement: one role per rubric; original brand, copy and product interactions retained. */
+body.pulse-v4 .v4-section-anchor{display:block;position:relative;top:-96px;visibility:hidden}
+body.pulse-v4 .what-wrap{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,.85fr)!important;align-items:center;gap:72px!important}
+body.pulse-v4 .what-copy{max-width:580px}body.pulse-v4 .what-video-wrap{grid-column:auto!important;grid-row:auto!important;justify-self:center;margin:0!important}
+body.pulse-v4 .what-copy p{font-size:18px;line-height:1.7;max-width:48ch}
+body.pulse-v4 .premium-showcase{min-height:680px;padding:20px 0!important}
+body.pulse-v4 .premium-device{width:300px;height:620px;transform:rotate(3deg)}
+body.pulse-v4 .premium-app-controls{margin-top:24px}
+body.pulse-v4 .premium-app-grid{gap:64px;align-items:center}
+body.pulse-v4 .v4-app-access{margin-top:32px;padding-top:28px;border-top:1px solid var(--v4-line);scroll-margin-top:112px}
+body.pulse-v4 .v4-app-access h3{font-size:20px;line-height:1.3;margin:0 0 18px;color:var(--v4-ink)}
+body.pulse-v4 .v4-app-access .app-download-stores{margin:0 0 18px;gap:12px;max-width:100%}
+body.pulse-v4 .v4-app-access .app-store-badge{color:var(--v4-ink);border-color:var(--v4-line);background:var(--v4-white);padding:14px;min-height:92px;border-radius:14px}
+body.pulse-v4 .v4-app-access .app-store-copy small,body.pulse-v4 .v4-app-access .app-store-status,body.pulse-v4 .v4-app-access .app-download-note,body.pulse-v4 .v4-app-access .app-store-release-note{color:var(--v4-muted)}
+body.pulse-v4 .v4-app-access .app-store-copy strong{color:var(--v4-ink);font-size:18px}
+body.pulse-v4 .v4-app-access .app-download-note,body.pulse-v4 .v4-app-access .app-store-release-note{font-size:13px;line-height:1.6;margin:10px 0 0}
+body.pulse-v4 #erfahrung{padding-bottom:0!important}
+body.pulse-v4 #erfahrung .trustbar{margin-top:36px;padding:22px 0;background:transparent;border-bottom:0}
+body.pulse-v4 .v4-close{padding:64px 0;background:var(--v4-plum-deep)}
+body.pulse-v4 .v4-close .v4-final-action{margin:0 auto;padding:0;background:transparent;box-shadow:none;border-radius:0;gap:40px;align-items:center}
+body.pulse-v4 .v4-close .v4-final-copy{max-width:750px}
+body.pulse-v4 .v4-close .v4-final-copy h2{color:var(--v4-white)!important;font-size:40px;line-height:1.13}
+body.pulse-v4 .v4-close .v4-final-copy h2 span{color:var(--pulse-ring)}
+body.pulse-v4 .v4-close .v4-final-copy .launch-lead{color:var(--v4-on-dark);font-size:16px;max-width:54ch}
+@media(max-width:60rem){body.pulse-v4 .what-wrap{gap:36px!important;grid-template-columns:minmax(0,1fr) minmax(0,.8fr)!important}body.pulse-v4 .what-copy p{font-size:16px}body.pulse-v4 .premium-showcase{min-height:0;padding:8px 0!important}body.pulse-v4 .premium-app-grid{gap:38px}body.pulse-v4 .v4-app-access{max-width:560px}body.pulse-v4 .v4-app-access .app-download-stores{grid-template-columns:repeat(2,minmax(0,1fr))}body.pulse-v4 .v4-close .v4-final-action{flex-direction:column;align-items:flex-start;gap:24px}}
+@media(max-width:40rem){body.pulse-v4 .what-wrap{grid-template-columns:minmax(0,1fr)!important;gap:30px!important}body.pulse-v4 .what-video-wrap{width:100%}body.pulse-v4 .premium-app-grid{gap:32px}body.pulse-v4 .premium-device{width:264px;height:554px;transform:none}body.pulse-v4 .premium-showcase{min-height:0!important}body.pulse-v4 .v4-app-access{margin-top:24px;padding-top:24px}body.pulse-v4 #erfahrung .pulse-experience-track>.pulse-experience-card{min-height:240px!important}body.pulse-v4 .v4-close{padding:48px 0}body.pulse-v4 .v4-close .v4-final-copy h2{font-size:30px!important}body.pulse-v4 .v4-close .v4-final-copy h2 br{display:block}body.pulse-v4 .v4-close .v4-final-copy h2 span:before{content:none}}
+@media(max-width:23rem){body.pulse-v4 .v4-app-access .app-download-stores{grid-template-columns:minmax(0,1fr)}}
+body.pulse-v4 .premium-app-grid{grid-template-rows:auto auto;gap:24px 64px}
+body.pulse-v4 .premium-app-copy{grid-column:1;grid-row:1;align-self:end}
+body.pulse-v4 .v4-app-access{grid-column:1;grid-row:2;align-self:start;margin-top:0}
+body.pulse-v4 .premium-showcase{grid-column:2;grid-row:1 / span 2}
+body.pulse-v4 .v4-app-access .app-store-copy{min-width:0}
+body.pulse-v4 .v4-app-access .app-store-badge>svg{color:var(--pulse-brand);flex-shrink:0}
+@media(max-width:60rem){body.pulse-v4 .premium-app-grid{gap:32px}body.pulse-v4 .premium-app-copy,body.pulse-v4 .premium-showcase,body.pulse-v4 .v4-app-access{grid-column:1;grid-row:auto;align-self:auto}body.pulse-v4 .premium-app-copy{order:0}body.pulse-v4 .premium-showcase{order:1}body.pulse-v4 .v4-app-access{order:2;width:100%;margin-inline:auto}}
+@media(max-width:40rem){body.pulse-v4 .v4-app-access .app-store-badge{padding:12px;gap:8px}body.pulse-v4 .v4-app-access .app-store-copy strong{font-size:16px}body.pulse-v4 .v4-app-access .app-store-badge>svg{width:18px}}
