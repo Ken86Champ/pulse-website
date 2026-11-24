@@ -1,0 +1,47 @@
+/* Hallmark · v2.0.0 · built: the project · redesign: polish · brand: original PULSE violet · copy: verbatim */
+/* Source correction: restore original phone geometry; use one typography and spacing scale. Visual verification pending. */
+/* User reference takes precedence: retain the original product frames, violet accents and floating compositions. */
+:root{
+--restore-face:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+--restore-brand:#693af0;--restore-ink:#191329;--restore-muted:#625b73;--restore-paper:#fffefd;--restore-line:#e4ddf3;--restore-on-dark:#f3efff;
+--restore-width:1440px;--restore-gutter:80px;--restore-section:96px;--restore-gap:40px;
+--restore-h1:clamp(44px,5.4vw,76px);--restore-h2:44px;--restore-h3:20px;--restore-body:18px;--restore-label:14px;--restore-caption:13px;
+}
+html.pulse-v4-page,body.pulse-v4{overflow-x:clip!important;overflow-y:visible!important}
+body.pulse-v4{font-family:var(--restore-face)!important;font-synthesis:none}
+body.page-consumer.pulse-v4 > header .wrap,
+body.page-consumer.pulse-v4 > main#top > section > .wrap,
+body.page-consumer.pulse-v4 > main#top > section.hero > .wrap.hero-inner,
+body.page-consumer.pulse-v4 > main#top > .offer-origin > .wrap,
+body.page-consumer.pulse-v4 > footer > .wrap{width:min(var(--restore-width),calc(100% - var(--restore-gutter)))!important;max-width:var(--restore-width)!important;margin-inline:auto!important}
+body.pulse-v4 main#top > section:not(.hero){padding-block:var(--restore-section)!important}
+body.pulse-v4 main#top section.hero .hero-inner{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:var(--restore-gap);padding-block:40px;align-items:center}
+body.pulse-v4 main#top .hero-copy h1{font-size:var(--restore-h1)!important;line-height:1.06!important;font-weight:800!important;letter-spacing:-.04em!important;margin:0 0 24px!important;max-width:18ch;min-width:0;overflow-wrap:break-word;text-wrap:balance}
+body.pulse-v4 main#top :is(.what-copy,.xp-heading,.pulse-proof-top,.premium-app-copy,.privacy-alpine-copy,.launch-flex,.sec-head,.v4-final-copy) h2{font-size:var(--restore-h2)!important;line-height:1.12!important;font-weight:800!important;letter-spacing:-.03em!important;margin:0 0 24px!important;min-width:0;overflow-wrap:break-word}
+body.pulse-v4 main#top :is(.what-copy,.premium-app-copy,.launch-offer,.v4-app-access) h3{font-size:var(--restore-h3)!important;line-height:1.3!important;font-weight:700!important;letter-spacing:-.02em}
+body.pulse-v4 main#top :is(.hero-copy>p:not(.offer-hero-terms):not(.offer-hero-anchor):not(.offer-hero-promise),.what-copy>p,.xp-heading-main>p,.premium-app-copy>.lead,.privacy-alpine-copy>p,.launch-lead,.offer-rationale){font-size:var(--restore-body)!important;line-height:1.65!important;font-weight:400!important;margin-top:0;max-width:60ch}
+body.pulse-v4 main#top .xp-heading h2>span{font-size:24px!important;line-height:1.4!important;font-weight:700!important;margin-top:12px}
+body.pulse-v4 main#top :is(.launch-offer li,.faq button){font-size:16px!important;line-height:1.65!important}
+body.pulse-v4 main#top .faq p{font-size:16px!important;line-height:1.65!important}
+body.pulse-v4 main#top :is(.privacy-alpine-note,.offer-terms,.offer-release-state,.offer-scope,.pulse-example-note){font-size:var(--restore-caption)!important;line-height:1.65!important}
+body.pulse-v4 main#top :is(.offer-hero-terms,.offer-hero-anchor,.offer-final-terms){font-size:var(--restore-label)!important;line-height:1.6!important}
+body.pulse-v4 :is(.btn.primary,.launch-mainbutton,.hero-actions>.btn.light){font-family:var(--restore-face)!important;font-size:15px!important;font-weight:700!important;line-height:1.3!important;min-height:52px;border-radius:12px!important;padding:14px 20px!important;display:inline-flex;align-items:center;justify-content:center}
+body.pulse-v4 .hero-actions>.btn.light{border:2px solid var(--restore-brand)!important;background:transparent!important;color:var(--restore-brand)!important;box-shadow:none!important}
+body.pulse-v4 :is(a,button,[tabindex="0"]):focus-visible{outline:3px solid var(--restore-brand)!important;outline-offset:4px;transition:none!important}
+body.pulse-v4 main#top .what-wrap,body.pulse-v4 main#top .premium-app-grid,body.pulse-v4 main#top .launch-flex,body.pulse-v4 main#top .privacy-alpine-inner{column-gap:var(--restore-gap)!important}
+body.pulse-v4 main#top .v4-close .v4-final-action{padding:0!important;margin-block:0!important}
+body.pulse-v4 main#top .v4-close .v4-final-copy h2{color:var(--restore-on-dark)!important}
+body.pulse-v4 main#top .v4-close .launch-lead{color:var(--restore-on-dark)!important}
+@media(max-width:60rem){:root{--restore-gutter:48px;--restore-section:64px;--restore-gap:32px;--restore-h2:38px}body.pulse-v4 main#top section.hero .hero-inner{grid-template-columns:minmax(0,1fr);padding-block:40px}body.pulse-v4 main#top .hero-copy{max-width:720px}body.pulse-v4 main#top .hero-copy h1{max-width:none}body.pulse-v4 main#top .premium-app-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:40rem){:root{--restore-gutter:36px;--restore-section:48px;--restore-gap:24px;--restore-h1:clamp(36px,10.2vw,48px);--restore-h2:32px;--restore-body:16px}body.pulse-v4 main#top section.hero .hero-inner{padding-block:32px}body.pulse-v4 main#top .xp-heading h2>span{font-size:20px!important}body.pulse-v4 main#top .hero-copy h1{margin-bottom:24px!important}body.pulse-v4 .hero-actions{gap:12px!important}body.pulse-v4 .hero-actions>.btn{width:100%}body.pulse-v4 main#top .v4-close .v4-final-copy h2{font-size:var(--restore-h2)!important}}
+@media(prefers-reduced-motion:reduce){body.pulse-v4.pulse-results-preview main#top *,body.pulse-v4.pulse-results-preview main#top *:before,body.pulse-v4.pulse-results-preview main#top *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Preserve the existing merged app section without changing the original device. */
+body.pulse-v4 main#top #app .premium-showcase{grid-column:2;grid-row:1 / span 2}
+@media(max-width:60rem){body.pulse-v4 main#top #app .premium-showcase{grid-column:1;grid-row:auto}}
+@media(prefers-reduced-motion:reduce){body.pulse-v4 *,body.pulse-v4 *:before,body.pulse-v4 *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Full-bleed carousel; its title and goal strip share the page's gutter tokens. */
+body.page-consumer.pulse-v4 main#top #erfahrung > .wrap{width:100%!important;max-width:none!important}
+body.page-consumer.pulse-v4 main#top #erfahrung .pulse-proof-top,
+body.page-consumer.pulse-v4 main#top #erfahrung .trustbar > .wrap{width:min(var(--restore-width),calc(100% - var(--restore-gutter)))!important;max-width:var(--restore-width)!important;margin-inline:auto!important}
