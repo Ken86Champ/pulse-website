@@ -11,6 +11,7 @@ for(const [file,html] of docs){
   if(target.endsWith('.html')&&!docs.has(target))errors.push(`${file}: escapes preview ${url}`);
  }
  for(const [i,m] of [...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)].entries()){try{new vm.Script(m[1])}catch(e){errors.push(`${file} script${i}: ${e.message}`)}}
+ if(/<script[^>]+src="(?:\/)?(?:checkout-availability|support-form)\.js/.test(html))errors.push(`${file}: production action script loaded`);
  if(!html.includes('noindex'))errors.push(`${file}: indexable`);
 }
 for(const file of ['acid-kontakt.html','acid-abo-kuendigen.html','acid-widerruf.html']){const s=docs.get(file);if(/fetch\(|src="\/support-form\.js"/.test(s))errors.push(`${file}: production action loaded`);if(!s.includes('id="send" disabled'))errors.push(`${file}: no-JS form guard absent`);}
