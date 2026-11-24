@@ -1,0 +1,25 @@
+name: PULSE V4 Preview Checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'personal-v4.html'
+      - 'personal-v4-offer.css'
+      - 'personal-trial-preview.html'
+      - 'scripts/check-v4-preview.js'
+      - '.github/workflows/pulse-v4-preview-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node scripts/check-v4-preview.js
+      - run: npm test
+      - run: npm run build
