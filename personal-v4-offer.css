@@ -24,3 +24,11 @@ body.pulse-v4 .offer-final-terms{font-size:14px;color:var(--pulse-ring);line-hei
 @media(max-width:60rem){.offer-origin>.wrap{display:block}.offer-origin p{margin-top:8px}body.pulse-v4 .hero-inner{min-height:0;padding-block:36px}body.pulse-v4 .hero-scene{min-height:0}body.pulse-v4 .offer-hero-promise{font-size:17px}}
 @media(max-width:40rem){.offer-preview-note{padding:10px 18px;font-size:12px}body.pulse-v4 .hero-scene{gap:16px}body.pulse-v4 .hero-actions{margin-top:24px}body.pulse-v4 .hero-copy .offer-hero-terms{font-size:13px}body.pulse-v4 .offer-hero-promise{font-size:16px}body.pulse-v4 .offer-origin{padding:22px 0}body.pulse-v4 .offer-trial-price strong{font-size:34px}body.pulse-v4 .hero-actions .btn.primary{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){.offer-preview-note,*:focus-visible{scroll-behavior:auto}}
+
+/* Selected offer variant 2, outlined demo CTA and clearer follow-up price. */
+body.pulse-v4 .hero .hero-actions > a.btn.light{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 20px;border:2px solid var(--offer-brand)!important;border-radius:12px!important;background:transparent!important;color:var(--offer-brand)!important;box-shadow:none!important;font-weight:700;line-height:1.25}
+body.pulse-v4 .hero .hero-actions > a.btn.light:hover{text-decoration:underline;text-underline-offset:4px}
+body.pulse-v4 .hero .hero-actions > a.btn.light:focus-visible{outline:3px solid var(--offer-brand);outline-offset:4px}
+body.pulse-v4 .offer-trial-price > span{font-size:clamp(26px,2.5vw,32px);font-weight:700;line-height:1.25;letter-spacing:-.025em}
+body.pulse-v4 .hero-copy .offer-hero-terms{font-size:15px}
+@media(max-width:40rem){body.pulse-v4 .hero .hero-actions > a.btn.light{width:100%}body.pulse-v4 .offer-trial-price > span{font-size:26px}}
