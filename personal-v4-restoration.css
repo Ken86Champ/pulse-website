@@ -57,3 +57,50 @@ body.pulse-v4 main#top .v4-app-access h3{margin:0 0 14px!important}
 body.pulse-v4 main#top .v4-access-description{color:var(--restore-ink);margin:0 0 16px}
 body.pulse-v4 main#top .v4-app-access .app-download-note{font-size:14px!important;line-height:1.6!important;margin:0;padding-top:16px;border-top:1px solid #ded2ff;max-width:none}
 @media(max-width:40rem){body.pulse-v4 main#top #app .v4-app-access{padding:22px!important}}
+
+/* Reference pass: ship the actual variable Inter font, including the bold weights. */
+@font-face{font-family:"PULSE Inter";src:url("assets/pulse-inter.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
+:root{--restore-face:"PULSE Inter",Inter,Arial,sans-serif;--restore-h2:48px;--restore-h1:var(--restore-h2);--restore-body:16px}
+body.pulse-v4{font-synthesis:weight;font-optical-sizing:auto}
+body.pulse-v4 main#top :is(.hero-copy h1,section h2){font-family:var(--restore-face)!important;font-size:var(--restore-h2)!important;line-height:1.12!important;font-weight:800!important;letter-spacing:-.04em!important}
+body.pulse-v4 main#top :is(h1,h2)>:is(span,em,strong){font-size:inherit!important;line-height:inherit!important;font-weight:inherit!important;font-style:normal!important}
+body.pulse-v4 main#top .xp-heading h2>span{font-size:inherit!important;line-height:inherit!important;font-weight:inherit!important;margin-top:0}
+body.pulse-v4 main#top .xp-heading h2>br,body.pulse-v4 .v4-final-copy h2 br{display:block}
+body.pulse-v4 main#top :is(.hero-copy>p,.what-copy>p,.pulse-connected-heading>p,.pulse-connected-card p,.premium-app-copy>.lead,.premium-mini-list small,.what-points small,.privacy-alpine-copy>p,.launch-lead,.faq p,.v4-access-description,.v4-close-summary li,.pulse-proof-top p){font-family:var(--restore-face)!important;font-size:var(--restore-body)!important;line-height:1.65!important}
+body.pulse-v4 main#top :is(.offer-hero-terms,.offer-hero-anchor){font-size:14px!important;line-height:1.6!important}
+body.pulse-v4 main#top :is(.kicker,.eyebrow,.launch-eyebrow){display:flex;align-items:center;gap:10px;font:800 12px/1.5 var(--restore-face)!important;letter-spacing:.12em!important;color:var(--restore-brand);margin:0 0 18px!important;text-transform:uppercase}
+body.pulse-v4 main#top :is(.kicker,.eyebrow):before{content:"";display:block;width:26px;height:2px;background:currentColor;flex:0 0 auto}
+body.pulse-v4 main#top .eyebrow-line{display:none}
+body.pulse-v4 main#top .hero-copy .experience-nudge{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:14px;font-weight:700;color:var(--restore-brand)}
+body.pulse-v4 main#top .hero-proof{display:flex;align-items:flex-start;gap:10px;margin-top:16px;font-size:14px;line-height:1.6;color:var(--restore-muted)}
+body.pulse-v4 main#top .hero-proof svg{width:18px;height:18px;flex-shrink:0;margin-top:3px}
+body.pulse-v4 main#top .hero-copy .audience{display:flex!important;flex-wrap:wrap;gap:8px;margin-top:20px}
+body.pulse-v4 main#top .hero-copy .audience span{font-size:12px;line-height:1.5;border:1px solid #d9ccff;border-radius:24px;padding:8px 12px}
+body.pulse-v4 main#top .what-wrap{grid-template-columns:minmax(0,1.1fr) minmax(200px,.7fr) minmax(0,.75fr)!important;align-items:center}
+body.pulse-v4 main#top .what-video-wrap{grid-column:2;grid-row:1}
+body.pulse-v4 main#top .what-points{grid-column:3;display:grid;gap:24px}
+body.pulse-v4 main#top .what-points strong,body.pulse-v4 main#top .premium-mini-list b{font-size:16px;font-weight:800}
+body.pulse-v4 main#top .pulse-connected-heading{max-width:900px;margin:0 auto 36px;text-align:center}
+body.pulse-v4 main#top .pulse-connected-heading .kicker{justify-content:center}
+body.pulse-v4 main#top .pulse-connected-heading>p{margin-top:20px}
+body.pulse-v4 main#top .pulse-connected-section{background:radial-gradient(ellipse at 50% 70%,#f0e9ff,transparent 65%),#fcfaff}
+body.pulse-v4 main#top .premium-mini-list{margin-top:28px}
+body.pulse-v4 main#top .v4-close{background:#f5f1ff!important;color:var(--restore-ink)}
+body.pulse-v4 main#top .v4-close .v4-final-action{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:var(--restore-gap)!important;align-items:center}
+body.pulse-v4 main#top .v4-close .v4-final-copy h2,body.pulse-v4 main#top .v4-close .launch-lead{color:var(--restore-ink)!important}
+body.pulse-v4 main#top .v4-close .v4-final-copy h2 span{color:var(--restore-brand)!important}
+body.pulse-v4 main#top .v4-close .v4-start{margin-top:24px}
+body.pulse-v4 main#top .v4-close-summary{padding:32px;border:1px solid #ded2ff;background:white;border-radius:24px;box-shadow:0 18px 48px #31136b0b}
+body.pulse-v4 main#top .v4-close-summary .launch-mini{font-size:12px;font-weight:800;color:var(--restore-brand)}
+body.pulse-v4 main#top .v4-close-summary h3{font-size:20px;line-height:1.3;margin:18px 0}
+body.pulse-v4 main#top .v4-close-summary ul{padding:0;list-style:none;display:grid;gap:12px;margin:0 0 20px}
+body.pulse-v4 main#top .v4-close-summary li{display:flex;gap:9px}
+body.pulse-v4 main#top .v4-close-summary li:before{content:"✓";color:var(--restore-brand);font-weight:800}
+body.pulse-v4 main#top .v4-close-summary a{font-size:14px;font-weight:800;color:var(--restore-brand)}
+@media(max-width:60rem){:root{--restore-h2:38px;--restore-h1:var(--restore-h2)}body.pulse-v4 main#top .what-wrap{grid-template-columns:minmax(0,1fr) minmax(220px,.8fr)!important}body.pulse-v4 main#top .what-points{grid-column:1;grid-row:2}body.pulse-v4 main#top .what-video-wrap{grid-column:2;grid-row:1 / span 2}body.pulse-v4 main#top .v4-close .v4-final-action{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:40rem){:root{--restore-h2:32px;--restore-h1:var(--restore-h2)}body.pulse-v4 main#top .what-wrap{grid-template-columns:minmax(0,1fr)!important}body.pulse-v4 main#top .what-video-wrap,body.pulse-v4 main#top .what-points{grid-column:1;grid-row:auto}body.pulse-v4 main#top .what-points{order:3}body.pulse-v4 main#top .hero-copy .audience span{font-size:12px}body.pulse-v4 main#top .v4-close-summary{padding:24px}}
+body.pulse-v4 main#top :is(.pulse-connected-card,.v4-close-summary) h3{font-size:20px!important;line-height:1.3!important;font-weight:800!important}
+body.pulse-v4 main#top :is(.pulse-auto-description,.privacy-alpine-perk p){font-family:var(--restore-face)!important;font-size:16px!important;line-height:1.65!important}
+body.pulse-v4 main#top .sec-head.center>.kicker{justify-content:center}
+body.pulse-v4 main#top .xp-heading .kicker{color:#bda5ff}
+body.pulse-v4 main#top .v4-close .offer-final-terms{color:var(--restore-muted)!important}
