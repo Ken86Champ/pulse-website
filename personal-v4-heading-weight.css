@@ -1,4 +1,6 @@
-/* Match the published original typography; preserve its native platform fallback. */
+/* Recovered original declared Inter asset, previously committed in 4a26376. */
+@font-face{font-family:Inter;src:url('assets/pulse-inter.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+/* Match the archived original heading weights using the recovered font, with no artificial stroke. */
 body.page-consumer.pulse-v4 main#top .hero-copy h1{font-weight:790!important;font-synthesis:weight style small-caps;-webkit-text-stroke:0}
 body.page-consumer.pulse-v4 main#top :is(.what-copy,.xp-heading,.pulse-proof-top,.premium-app-copy,.privacy-alpine-copy,.launch-flex,.sec-head,.v4-final-copy) h2{font-weight:760!important;font-synthesis:weight style small-caps;-webkit-text-stroke:0}
 body.page-consumer.pulse-v4 main#top :is(.launch-offer,.v4-app-access) h3{font-weight:720!important;font-synthesis:weight style small-caps;-webkit-text-stroke:0}
