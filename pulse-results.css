@@ -29,3 +29,5 @@ body.page-consumer.pulse-v4 main#top #erfahrung>.pulse-results-wrap{width:min(14
 #erfahrung .pulse-results-heading .pulse-results-eyebrow{color:#693af0}
 #erfahrung.pulse-real-experiences{padding-top:0!important;padding-bottom:0!important}
 @media(max-width:600px){body.page-consumer.pulse-v4 main#top #erfahrung>.pulse-results-wrap{width:calc(100% - 36px)!important}#erfahrung .pulse-results-heading p{text-align:left;margin-left:0}}
+
+@media(max-width:600px){.pulse-results-dots{flex-wrap:wrap;max-width:calc(100% - 100px)}.pulse-results-dots button{width:20px;height:24px}.pulse-results-dots button[aria-current=true]:after{width:16px}.pulse-results-navigation{flex-shrink:0}}
