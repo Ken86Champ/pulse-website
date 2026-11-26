@@ -1,0 +1,38 @@
+/* PULSE final polish — spacing only; approved typography, copy and product geometry stay intact. */
+body.page-consumer,body.affiliate-page{--finish-section:72px;--finish-heading:32px}
+body.pulse-v4{--restore-section:var(--finish-section)}
+body{--business-section-space:72px;--business-heading-gap:32px}
+
+/* B2C: keep the existing gutter system and remove uneven outer section spacing. */
+body.page-consumer:not(.pulse-v4) main#top>section:not(.hero){padding-block:var(--finish-section)!important}
+body.page-consumer main#top>#erfahrung.pulse-real-experiences:has(>.pulse-results-wrap){padding-block:0!important}
+body.page-consumer.pulse-v4 main#top>#erfahrung>.pulse-results-wrap{
+  width:min(1200px,calc(100% - var(--restore-gutter,80px)))!important;
+  max-width:1200px!important;margin-inline:auto!important;
+  padding-block:var(--finish-section)!important
+}
+body.page-consumer #erfahrung .pulse-results-heading{margin-bottom:var(--finish-heading)}
+body.page-consumer #erfahrung .pulse-results-track{align-items:stretch}
+body.page-consumer #erfahrung .pulse-results-card{min-width:0}
+/* Original image dimensions and crop coordinates are deliberately preserved. */
+
+/* Affiliate: one outer rhythm; device interiors and card contents keep their own spacing. */
+body.affiliate-page main#inhalt>section:not(.hero){padding-block:var(--finish-section)}
+body.affiliate-page .af-section-top{margin-bottom:var(--finish-heading)}
+body.affiliate-page .af-steps{margin-top:var(--finish-heading)}
+body.affiliate-page .af-rate-card{min-width:0}
+
+/* B2B already uses these tokens; match its tablet rhythm to the other landing pages. */
+body main>.section>.wrap>.kopf,body main>#tour>.wrap>.kopf{margin-bottom:var(--business-heading-gap)}
+
+@media(max-width:960px){
+  body.page-consumer,body.affiliate-page{--finish-section:64px;--finish-heading:32px}
+  body{--business-section-space:64px;--business-heading-gap:32px}
+}
+@media(max-width:640px){
+  body.page-consumer,body.affiliate-page{--finish-section:48px;--finish-heading:24px}
+  body{--business-section-space:48px;--business-heading-gap:24px}
+  body.page-consumer.pulse-v4 main#top>#erfahrung>.pulse-results-wrap{
+    width:calc(100% - 36px)!important
+  }
+}
