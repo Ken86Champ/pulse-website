@@ -1,6 +1,7 @@
 'use strict';
 const { rmSync, mkdirSync, readdirSync, copyFileSync, cpSync } = require('node:fs');
 const { join } = require('node:path');
+require('node:child_process').execFileSync(process.execPath, [join(__dirname, 'sync-footers.js'), '--check'], { stdio: 'inherit' });
 const root = join(__dirname, '..'), output = join(root, 'public');
 rmSync(output, { recursive: true, force: true }); mkdirSync(output);
 for (const file of readdirSync(root)) {

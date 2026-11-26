@@ -1,0 +1,17 @@
+/* One shared footer; page content and header navigation retain their existing styling. */
+@font-face{font-family:Inter;src:url('assets/pulse-inter.woff2') format('woff2');font-weight:100 900;font-display:swap}
+footer#pulse-footer{box-sizing:border-box;display:block;width:100%;max-width:none;margin:0;padding:44px 0 28px;background:#120e1d;color:#e1d8ff;font:14px/1.6 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;text-align:left;border:0;border-radius:0}
+#pulse-footer *,#pulse-footer *::before,#pulse-footer *::after{box-sizing:border-box}
+#pulse-footer .pulse-footer-inner{width:min(1440px,calc(100% - 80px));max-width:1440px;margin:0 auto;padding:0}
+#pulse-footer .pulse-footer-top{display:flex;align-items:center;gap:32px;margin:0 0 32px;padding:0}
+#pulse-footer .pulse-footer-brand{display:inline-flex;flex:none;align-items:center;gap:12px;margin:0;padding:0;color:#fff!important;font-size:25px;font-weight:800;line-height:1.2;letter-spacing:.03em;text-decoration:none;white-space:nowrap}
+#pulse-footer .pulse-footer-badge{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#9765ff,#5124de);color:#fff}
+#pulse-footer .pulse-footer-badge svg{display:block;position:static;width:28px;height:28px;fill:none}
+#pulse-footer p{margin:0;padding:0;color:#d4cbe6;font:inherit;text-align:left}
+#pulse-footer .pulse-footer-links{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:12px 24px;width:100%;max-width:none;margin:0;padding:0;list-style:none}
+#pulse-footer .pulse-footer-links a{display:inline-block;margin:0;padding:4px 0;color:#e1d8ff!important;font:inherit;line-height:1.6;letter-spacing:normal;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+#pulse-footer .pulse-footer-links a:hover{color:#fff!important}
+#pulse-footer a:focus-visible{outline:3px solid #b998ff!important;outline-offset:5px;border-radius:3px}
+#pulse-footer .pulse-footer-copyright{margin:24px 0 0;padding:20px 0 0;border-top:1px solid #ffffff24;font-size:13px}
+@media(max-width:960px){#pulse-footer .pulse-footer-inner{width:calc(100% - 48px)}}
+@media(max-width:640px){footer#pulse-footer{padding:32px 0 24px}#pulse-footer .pulse-footer-inner{width:calc(100% - 36px)}#pulse-footer .pulse-footer-top{align-items:flex-start;flex-direction:column;gap:16px;margin-bottom:24px}#pulse-footer .pulse-footer-links{gap:8px 20px}#pulse-footer .pulse-footer-copyright{margin-top:20px;padding-top:16px}}
