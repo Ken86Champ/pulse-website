@@ -31,3 +31,12 @@ Kein Produktions-Release, keine Zahlung, keine Demo-/Partneranfrage versendet.
 ## Empfohlener endgültiger B2B-Ablauf
 Persönliche Demo anfragen → sechs Business-Angaben → echte Eingangsbestätigung → Termin direkt auswählen → Beispielsetup für den Termin → Live-Softwarevorstellung → individuell vereinbarter Pilot.
 Für die direkte Terminauswahl braucht es einen bestätigten Buchungslink. Für Speicherung/Benachrichtigung eine getestete Lead-Annahme; ein Mailto-Link ist kein automatischer Versand.
+
+
+## Nachtrag: Cal.com und finale Partnerbedingungen
+- Vom Nutzer bestätigter Buchungslink: https://cal.com/ken-buser-nyfsfe/pulse-demo. Screenshot nennt 45 Minuten und Cal Video.
+- B2B-Conversion-CTAs führen direkt zu Cal.com. business-demo.html bleibt als kompatible Informationsseite mit demselben Buchungslink erhalten; der vorbereitende lokale E-Mail-Fragebogen ist aus dem Weg entfernt.
+- Datenschutzerklärung um den externen Cal.com-Buchungsweg ergänzt. Kein eingebetteter Kalender, keine automatische Datenübergabe.
+- Affiliate-Konditionen vom Nutzer als final bestätigt. Entwurfskennzeichnung entfernt, Fassung AF-2026-11-26-R3. Provisionssätze, Laufzeit, Auszahlungs- und Beendigungsregeln bleiben inhaltlich unverändert.
+- Finale Bedingungen bedeuten nicht automatisch freigeschaltetes Partnerportal. Keine Änderungen an Tracking oder Auszahlungsinfrastruktur.
+- Öffentliche Cal-Buchungsseite konnte mit der Web-Recherche nicht abgerufen werden; Link aus dem Screenshot übernommen. Kalenderanbindung, Benachrichtigungen und Erinnerungs-Workflows im privaten Cal-Konto nicht überprüfbar. Kein Testtermin angelegt, keine E-Mail ausgelöst.
