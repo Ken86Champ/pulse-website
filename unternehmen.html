@@ -478,6 +478,27 @@ dialog img{max-width:min(1500px,96vw);max-height:86vh;width:auto;border-radius:1
   </div>
 </section>
 
+<section class="section business-case" id="betreuungsaufwand" aria-labelledby="h-business-case">
+<div class="wrap">
+<div class="kopf"><div><p class="eyebrow">Mehr Kapazität für dein Business</p><h2 id="h-business-case">Weniger Routine.<br><em>Mehr Raum für Kunden.</em></h2></div><p class="lead">Wo bindet die tägliche Betreuung heute deine Zeit? Sieh dir den Ablauf mit PULSE an und rechne mit deinen eigenen Angaben.</p></div>
+<div class="business-case-grid">
+<div class="case-comparison"><h3>So verändert sich dein Betreuungsalltag.</h3><p class="klein">Ablaufvergleich · die Produktbeispiele siehst du in der Tour.</p>
+<table><caption class="visually-hidden">Betreuung im direkten Vergleich</caption><thead><tr><th scope="col">Deine Aufgabe</th><th scope="col">Heute manuell</th><th scope="col">Mit PULSE</th></tr></thead><tbody>
+<tr><th scope="row">Dranbleiben</th><td>Check-ins und Erinnerungen einzeln schreiben.</td><td>PULSE begleitet die Umsetzung und fragt proaktiv nach.</td></tr>
+<tr><th scope="row">Überblick</th><td>Chats und Einträge einzeln durchgehen.</td><td>Das tägliche Briefing bündelt, was läuft und Aufmerksamkeit braucht.</td></tr>
+<tr><th scope="row">Entscheiden</th><td>Antworten und Plananpassungen selbst vorbereiten.</td><td>Vorbereitete Vorschläge prüfen und dort eingreifen, wo du gefragt bist.</td></tr>
+</tbody></table><a class="case-textlink" href="#tour">Den Ablauf in PULSE ansehen →</a></div>
+<form class="case-calculator" id="routine-calculator" aria-labelledby="h-routine" novalidate>
+<p class="eyebrow">Deine Ausgangslage</p><h3 id="h-routine">Wie viel Zeit steckt heute in deiner Routine?</h3>
+<p>Für Check-ins, Erinnerungen, Rückfragen und das Zusammenführen von Informationen.</p>
+<div class="case-inputs"><label for="routine-customers">Betreute Kunden<input id="routine-customers" name="customers" type="number" inputmode="numeric" min="0" max="10000" step="1" value="30" required></label><label for="routine-minutes">Minuten pro Kunde / Woche<input id="routine-minutes" name="minutes" type="number" inputmode="decimal" min="0" max="10080" step="any" value="30" required></label></div>
+<p class="case-error" id="routine-error" role="status" hidden>Bitte gib eine gültige Kundenanzahl (0–10’000) und Minuten pro Woche (0–10’080) ein.</p>
+<div class="case-results" aria-live="polite" aria-atomic="true"><div><output id="routine-week" for="routine-customers routine-minutes">15</output><span>Stunden pro Woche</span></div><div><output id="routine-month" for="routine-customers routine-minutes">65</output><span>Stunden pro Monat</span></div></div>
+<p class="klein">Dein heutiger Aufwand, keine zugesagte Zeitersparnis. Beispielwerte sind frei änderbar. Rechnung: Kunden × Minuten ÷ 60; Monat = 52 ÷ 12 Wochen. Deine Angaben bleiben im Browser.</p>
+<p><strong>Im Pilot prüfen wir gemeinsam, wie viel davon PULSE in deinem Ablauf übernehmen kann.</strong></p><a class="btn primary" href="#pilot">Meinen Anwendungsfall besprechen →</a>
+</form></div>
+</div></section>
+
 <section class="section faq" id="faq" aria-labelledby="h-faq">
   <div class="wrap">
     <div><p class="eyebrow">Fragen</p><h2 id="h-faq">Was Coaches<br><em>uns fragen.</em></h2></div>
@@ -489,6 +510,7 @@ dialog img{max-width:min(1500px,96vw);max-height:86vh;width:auto;border-radius:1
       <details><summary>Wie erreichen meine Kunden PULSE?</summary><p>Über Telegram, WhatsApp oder den Chat in ihrer PULSE-App. Die App läuft als Web-App auf dem Handy, mit Plan, Übungsanleitungen, Ernährungstagebuch und Fortschritt.</p></details>
       <details><summary>Kann PULSE Ergebnisse garantieren?</summary><p>Nein. PULSE sorgt für einen klaren Plan und tägliche Unterstützung bei der Umsetzung. Was dein Kunde daraus macht, bleibt bei ihm.</p></details>
       <details><summary>Wo werden die Daten verarbeitet?</summary><p>Für die Anwendung ist Frankfurt, für die Datenbank Zürich vorgesehen. Bei Messenger-, KI- und weiteren Diensten können andere Datenwege gelten. Vor der Einrichtung klären wir die beteiligten Anbieter und vereinbaren die erforderliche Auftragsbearbeitung. Details findest du in unseren Datenschutzhinweisen.</p></details>
+      <details><summary>Wie aufwendig ist der Einstieg?</summary><p>Wir klären in der Demo, wie du heute arbeitest und welche Einrichtung nötig ist. Vorgaben, Kundengruppe, Freigabemodus und persönliche Übergaben legen wir für dein Pilotprojekt gemeinsam fest. Ein automatischer Datenumzug wird nicht vorausgesetzt.</p></details>
       <details><summary>Wie starte ich mit PULSE?</summary><p>Mit einer persönlichen Einrichtung. Wir richten PULSE gemeinsam mit dir ein und starten mit einer ersten Kundengruppe als Pilot. Umfang und Preis klären wir vorher.</p></details>
     </div>
   </div>
@@ -497,15 +519,16 @@ dialog img{max-width:min(1500px,96vw);max-height:86vh;width:auto;border-radius:1
 <section class="section angebot" id="pilot" aria-labelledby="h-pilot">
   <div class="wrap">
     <div>
-      <p class="eyebrow">Persönliche Einrichtung</p>
-      <h2 id="h-pilot">Sieh PULSE an<br><em>deinem Geschäftsmodell.</em></h2>
-      <p class="lead" style="margin-top:20px">Beschreibe deinen Betreuungsablauf. Wir zeigen dir PULSE an einem fiktiven Fall und klären, wie ein persönlich eingerichtetes Pilotprojekt für dein Unternehmen aussehen kann.</p>
+      <p class="eyebrow">Deine persönliche Demo</p>
+      <h2 id="h-pilot">Sieh, wie PULSE<br><em>deinen Alltag entlastet.</em></h2>
+      <p class="lead" style="margin-top:20px">Wir zeigen dir deinen Anwendungsfall anhand von Beispieldaten, klären den Einrichtungsaufwand und besprechen ein passendes Pilotprojekt. Du weisst danach, wie PULSE in deinen Betreuungsablauf passt.</p>
     </div>
     <div class="pilot">
+      <p class="pilot-assurance"><strong>Deine Vorgaben. Dein Freigabemodus. Dein Überblick.</strong><br>Zu Beginn prüfst du vorgeschlagene Antworten. Den selbstständigen Betrieb aktivierst du, wenn Einrichtung und Ablauf für dich passen.</p>
       <ol>
-        <li><span><b>Gespräch</b>Du erzählst, wie du coachst und wie viele Kunden du betreust.</span></li>
-        <li><span><b>Einrichtung</b>Wir klären Leistungsumfang, Einrichtung, Preis und Datenschutzunterlagen mit dir.</span></li>
-        <li><span><b>Pilot</b>Nach Vereinbarung startest du mit einer ersten Kundengruppe und entscheidest danach über den Ausbau.</span></li>
+        <li><span><b>Deinen Ablauf gemeinsam durchspielen</b>Von der Kundenanlage über die Planung bis zur täglichen Begleitung und deinem Briefing.</span></li>
+        <li><span><b>Einrichtung und Kontrolle klären</b>Deine Vorgaben, Freigaben und persönliche Übergaben – dazu Leistungsumfang, Preis und Datenschutzunterlagen.</span></li>
+        <li><span><b>Überschaubar starten und prüfen</b>Nach Vereinbarung mit einer ersten Kundengruppe starten. Routineaufwand, nötige Eingriffe und Kundenaktivität auswerten, bevor du über den Ausbau entscheidest.</span></li>
       </ol>
       <a class="btn primary" href="mailto:hello.pulse.coach@gmail.com?subject=PULSE%20Business%20%E2%80%93%20pers%C3%B6nliche%20Demo&amp;body=Hallo%20PULSE-Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20eine%20pers%C3%B6nliche%20Demo.%0A%0AUnternehmen%3A%20%0AGesch%C3%A4ftsmodell%3A%20%0ABetreute%20Kunden%3A%20%0AMein%20Anwendungsfall%3A%20">Persönliche Demo per E-Mail anfragen ↗</a><div class="kontakt"><span class="adresse" id="adresse">hello.pulse.coach@gmail.com</span><button class="btn ghost navcta" id="kopieren">Adresse kopieren</button></div>
       <p class="klein" id="kopiert" aria-live="polite">Deine Anfrage ist unverbindlich. Der Button öffnet dein E-Mail-Programm; du sendest die Nachricht selbst. Bitte sende keine Kundendaten und keine Gesundheitsangaben.</p>
@@ -1359,4 +1382,21 @@ dialog img{max-width:min(1500px,96vw);max-height:86vh;width:auto;border-radius:1
 @media(max-width:760px){#tour .kopf{grid-template-columns:1fr;gap:20px}#tour .kopf h2{font-size:42px}#tour .kopf .lead{font-size:15px}#tour .stationen{grid-template-columns:1fr 1fr;gap:10px}#tour .station-tab{min-height:105px}#tour #st-3{grid-template-columns:1fr;gap:18px}#tour .station-text,.tour-explanation{padding:22px}.tour-feature{grid-template-columns:minmax(100px,.8fr) minmax(0,1.2fr);gap:15px}#activation-live{padding:22px 15px}.tour-playbar{grid-column:1}}
 @media(max-width:640px){.hero-product-stage{grid-template-columns:minmax(0,1fr) minmax(145px,.68fr);max-width:510px}.hero-product-stage .hero-chat-device{border-width:5px!important;border-radius:27px!important}.hero-device-status{height:22px;padding:0 10px;font-size:8px}.hero-device-status i{height:13px}.hero-device-header{gap:4px;padding:8px 5px}.hero-device-avatar{width:22px;height:22px;font-size:19px}.hero-device-header b{font-size:7px}.hero-device-header small{font-size:6px}.hero-device-back{font-size:19px}.hero-device-menu{font-size:8px}.hero-device-chat{padding:7px 6px;gap:6px}.hero-bubble{font-size:7px;padding:6px;max-width:95%;line-height:1.35}.hero-bubble small{margin-top:3px}.hero-device-input{padding:6px 5px;gap:4px}.hero-device-input>span:nth-child(2){font-size:6px;padding:6px 4px}.hero-device-input>span:first-child,.hero-device-input>span:last-child{font-size:13px}}
 @media(max-width:420px){#activation-live .xp-phone-shell,#activation-live .pulse-liveapp-device{height:345px!important;border-width:4px!important;border-radius:24px!important}#activation-live .xp-scene-layout{gap:10px!important}#activation-live{padding:16px 10px}.tour-feature{grid-template-columns:1fr;gap:5px}#tour .kopf h2{font-size:36px}}
-</style><style>@media(min-width:761px) and (max-width:1000px){#tour #st-3{grid-template-columns:1fr}#activation-live .xp-phone-shell,#activation-live .pulse-liveapp-device{height:480px!important}}@media(max-width:420px){#activation-live .xp-scene-layout{grid-template-columns:1fr!important;gap:24px!important}#activation-live .xp-phone-shell,#activation-live .pulse-liveapp-device{height:470px!important;max-width:242px!important;border-width:6px!important;border-radius:34px!important}#activation-live .xp-chat-head{padding:10px 12px 14px;gap:8px}#activation-live .xp-avatar{width:32px;height:32px;font-size:24px}#activation-live .xp-chat-head b{font-size:10px}#activation-live .xp-chat-head small{font-size:8px}#activation-live .xp-chat-area{padding:14px 11px}#activation-live .xp-message{font-size:11px;padding:10px;max-width:91%}#activation-live .xp-chat-input>div{font-size:9px}#activation-live .xp-phone-status{font-size:10px;padding:9px 18px 0}#activation-live .xp-island{width:80px;height:18px}#activation-live .pulse-liveapp-bar{font-size:8px!important}}</style></body></html>
+</style><style>@media(min-width:761px) and (max-width:1000px){#tour #st-3{grid-template-columns:1fr}#activation-live .xp-phone-shell,#activation-live .pulse-liveapp-device{height:480px!important}}@media(max-width:420px){#activation-live .xp-scene-layout{grid-template-columns:1fr!important;gap:24px!important}#activation-live .xp-phone-shell,#activation-live .pulse-liveapp-device{height:470px!important;max-width:242px!important;border-width:6px!important;border-radius:34px!important}#activation-live .xp-chat-head{padding:10px 12px 14px;gap:8px}#activation-live .xp-avatar{width:32px;height:32px;font-size:24px}#activation-live .xp-chat-head b{font-size:10px}#activation-live .xp-chat-head small{font-size:8px}#activation-live .xp-chat-area{padding:14px 11px}#activation-live .xp-message{font-size:11px;padding:10px;max-width:91%}#activation-live .xp-chat-input>div{font-size:9px}#activation-live .xp-phone-status{font-size:10px;padding:9px 18px 0}#activation-live .xp-island{width:80px;height:18px}#activation-live .pulse-liveapp-bar{font-size:8px!important}}</style><style id="business-offer-additions">
+.business-case{background:var(--white)}.business-case-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:start}.case-comparison,.case-calculator{min-width:0;border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--white)}.case-calculator{background:var(--purple-soft)}.case-comparison h3,.case-calculator h3{margin:0 0 12px}.case-calculator>p{margin-bottom:18px}.case-comparison table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;line-height:1.55;table-layout:fixed}.case-comparison th,.case-comparison td{text-align:left;vertical-align:top;padding:16px 10px;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.case-comparison thead th{font-size:12px;color:var(--muted);font-weight:750}.case-comparison th:first-child{width:23%;padding-left:0}.case-comparison tbody th{font-weight:750;color:var(--ink)}.case-comparison td{color:var(--muted)}.case-comparison td:last-child{color:var(--ink)}.case-textlink{color:var(--purple);font-size:14px;font-weight:750}.case-inputs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}.case-inputs label{font-size:13px;font-weight:700;color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;gap:8px;min-width:0}.case-inputs input{width:100%;min-width:0;box-sizing:border-box;border:1px solid #cec3e8;border-radius:10px;background:white;color:var(--ink);padding:12px;font:inherit;font-size:20px;font-weight:750}.case-inputs input:focus-visible{outline:2px solid var(--purple);outline-offset:2px}.case-inputs input[aria-invalid=true]{border-color:#b52b46}.case-error{font-size:13px;color:#a3233f}.case-results{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:20px 0;margin-bottom:14px;border-block:1px solid #ddd3ef}.case-results output{display:block;font-size:clamp(28px,3vw,42px);line-height:1.15;font-weight:800;letter-spacing:-.04em;color:var(--purple);overflow-wrap:anywhere}.case-results span{display:block;font-size:12px;margin-top:7px;color:var(--muted)}.case-calculator .btn{width:100%;text-align:center}.pilot-assurance{padding-bottom:18px;border-bottom:1px solid var(--line);font-size:14px;line-height:1.65}.pilot-assurance strong{display:inline-block;margin-bottom:6px;color:var(--ink)}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}@media(max-width:920px){.business-case-grid{grid-template-columns:1fr}}@media(max-width:480px){.case-comparison,.case-calculator{padding:20px}.case-comparison table{font-size:12px}.case-comparison th,.case-comparison td{padding:12px 6px}.case-inputs{grid-template-columns:1fr}.case-results{gap:12px}}
+</style><script>
+(function(){
+"use strict";
+var form=document.getElementById("routine-calculator");if(!form)return;
+var customers=document.getElementById("routine-customers"),minutes=document.getElementById("routine-minutes"),week=document.getElementById("routine-week"),month=document.getElementById("routine-month"),error=document.getElementById("routine-error");
+var format=new Intl.NumberFormat("de-CH",{maximumFractionDigits:1});
+function update(){
+var c=customers.valueAsNumber,m=minutes.valueAsNumber;
+var cv=Number.isFinite(c)&&Number.isInteger(c)&&c>=0&&c<=10000,mv=Number.isFinite(m)&&m>=0&&m<=10080;
+customers.setAttribute("aria-invalid",String(!cv));minutes.setAttribute("aria-invalid",String(!mv));error.hidden=cv&&mv;
+if(!cv||!mv){week.value="–";month.value="–";return}
+var hours=c*m/60;week.value=format.format(hours);month.value=format.format(hours*52/12);
+}
+form.addEventListener("submit",function(e){e.preventDefault();update()});customers.addEventListener("input",update);minutes.addEventListener("input",update);update();
+})();
+</script></body></html>
