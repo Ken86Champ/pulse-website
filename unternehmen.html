@@ -448,8 +448,8 @@ dialog img{max-width:min(1500px,96vw);max-height:86vh;width:auto;border-radius:1
 <section class="section" id="dashboard" aria-labelledby="h-dash">
   <div class="wrap">
     <div class="kopf">
-      <div><p class="eyebrow">Dein Dashboard</p><h2 id="h-dash">Ein Blick am Morgen.<br><em>Das Wichtige zuerst.</em></h2></div>
-      <p class="lead">Die Startseite „Heute“ fasst zusammen, was bei deinen Kunden passiert ist und was auf dich wartet. Tippe auf die Markierungen.</p>
+      <div><p class="eyebrow">Autonome Kundenbetreuung. Deine Kontrolle.</p><h2 id="h-dash">PULSE betreut.<br><em>Du greifst ein,<br>wenn es zählt.</em></h2></div>
+      <p class="lead">PULSE übernimmt die tägliche Kundenbegleitung nach deinen Coaching-Vorgaben. Dein tägliches Briefing zeigt dir, was läuft und wo deine persönliche Unterstützung oder Freigabe gefragt ist.</p>
     </div>
     <div class="dash-buehne">
       <div>
@@ -474,6 +474,7 @@ dialog img{max-width:min(1500px,96vw);max-height:86vh;width:auto;border-radius:1
         <div class="erklaer-nav"><button class="btn ghost navcta" id="erZurueck" aria-label="Vorherige Markierung">←</button><button class="btn ghost navcta" id="erVor">Nächste Markierung →</button></div>
       </aside>
     </div>
+    <p class="lead" style="max-width:880px;margin-top:32px"><strong>Mehr Kunden betreuen, ohne jede Nachricht selbst zu beantworten oder jeden Fortschritt einzeln nachzuverfolgen.</strong></p>
   </div>
 </section>
 
@@ -555,13 +556,32 @@ dialog img{max-width:min(1500px,96vw);max-height:86vh;width:auto;border-radius:1
 
   /* Dashboard */
   var P=[
-    {t:"Das Briefing",x:"Ein Satz, der sagt, wie es um deine Kunden steht, und darunter, was heute deine Entscheidung braucht. PULSE rechnet ihn aus den Daten deiner Kunden.",a:"Briefing lesen → „2 Freigaben ansehen“ → Antwort freigeben oder anpassen."},
-    {t:"Eskalationen",x:"Was nur du entscheiden kannst, steht ganz oben auf jeder Seite: Schmerz, Planänderungen oder ein Kunde, der dich sprechen will.",a:"Eskalation öffnen → persönlich antworten → „Erledigt“."},
-    {t:"Die Kennzahlen des Tages",x:"Wie viele Kunden auf Kurs und dabei sind, wie viele Trainings und Mahlzeiten erfasst wurden, im Vergleich zur Vorwoche. Gezählt wird, was deine Kunden selbst getan haben.",a:"Sinkt „Dabei diese Woche“, siehst du unter „Braucht Aufmerksamkeit“, wer fehlt."},
-    {t:"Entscheidungen",x:"Antworten zur Freigabe, Planvorschläge und Eskalationen an einem Ort. Nichts erreicht deine Kunden, was du nicht willst.",a:"Planvorschlag von Marco → prüfen → „Freigeben und senden“. Die Änderung steht sofort in seiner App."},
-    {t:"Wo stehen deine Kunden?",x:"Jeder Kunde als Punkt nach Fortschritt und Engagement. Du siehst auf einen Blick, wer läuft, wer leise ist und wer abrutscht.",a:"Kunde unten links → Kundenblatt öffnen → mit einer persönlichen Nachricht oder einem angepassten Plan reagieren."}
-  ];
-  var pk=$$(".punkt"), pn=0;
+  {
+    "t": "Dein tägliches Briefing",
+    "x": "Die Betreuung läuft weiter, auch während du trainierst oder Termine hast. PULSE bündelt die erfassten Aktivitäten, Rückmeldungen und Fortschritte. Du startest mit einem klaren Überblick und den wichtigsten Prioritäten.",
+    "a": "Briefing lesen → relevante Fälle prüfen → gezielt eingreifen."
+  },
+  {
+    "t": "Persönlich übernehmen",
+    "x": "Du musst nicht jede Nachricht selbst prüfen. PULSE hebt Fälle hervor, in denen deine persönliche Unterstützung oder Entscheidung gefragt ist – etwa bei Schmerzen, Planänderungen oder dem Wunsch nach einem Gespräch mit dir.",
+    "a": "Markierten Fall öffnen → persönlich übernehmen → als erledigt markieren."
+  },
+  {
+    "t": "Das Wesentliche überwachen",
+    "x": "Du siehst, wer auf Kurs und aktiv ist und wie sich erfasste Trainings und Mahlzeiten entwickeln. So überwachst du die Betreuung zentral, statt jeden Kunden einzeln nach seinem Stand zu fragen.",
+    "a": "Entwicklung prüfen → bei Auffälligkeiten den betroffenen Kunden ansehen."
+  },
+  {
+    "t": "Vorbereitet entscheiden",
+    "x": "PULSE bereitet Antwortentwürfe und Planvorschläge für dich vor. Du prüfst, passt an und gibst frei, wo deine Entscheidung nötig ist. Die tägliche Routinebegleitung läuft im eingerichteten autonomen Modus weiter.",
+    "a": "Vorschlag öffnen → prüfen oder anpassen → freigeben und senden."
+  },
+  {
+    "t": "Gezielt nachsteuern",
+    "x": "Fortschritt und Engagement zeigen dir, wo die Betreuung läuft und wer Unterstützung braucht. Dein Einsatz konzentriert sich auf die Kunden, bei denen deine Erfahrung gerade den Unterschied machen kann.",
+    "a": "Kundenentwicklung ansehen → bei Bedarf persönlich unterstützen oder den Plan anpassen."
+  }
+];  var pk=$$(".punkt"), pn=0;
   function punkt(i){pn=(i+P.length)%P.length; var p=P[pn]; pk.forEach(function(b,j){b.setAttribute("aria-pressed",j===pn)}); $("#erNr").textContent=pn+1; $("#erTitel").textContent=p.t; $("#erText").textContent=p.x; $("#erAblauf").textContent=p.a;}
   pk.forEach(function(b,i){b.addEventListener("click",function(){punkt(i); if(window.innerWidth<920){$(".erklaer").scrollIntoView({behavior:weniger?"auto":"smooth",block:"nearest"})}})});
   $("#erVor").addEventListener("click",function(){punkt(pn+1)});
