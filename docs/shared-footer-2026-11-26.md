@@ -13,4 +13,4 @@ Validation: 21 page bodies compared against the previous commit after excluding 
 
 Preview only; production is not promoted by this change.
 
-Browser verification: B2C, Business and Affiliate footer destinations checked in the deployed preview, including opening the Affiliate AGBs link. Narrow-layout check at approximately 337 CSS pixels: links fit without horizontal clipping and the footer top stacks vertically. B2C inherited a generic 100px navigation height; the shared footer now explicitly resets navigation height to auto.
+Browser verification: B2C, Business and Affiliate footer destinations checked in the deployed preview, including opening the Affiliate AGBs link. Narrow-layout check at approximately 337 CSS pixels: links fit without horizontal clipping and the footer top stacks vertically. B2C applied an inherited 44px minimum height to footer links. All shared footer links now explicitly use that same 44px minimum touch target and centre their text; navigation height remains auto.

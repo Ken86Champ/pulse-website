@@ -9,7 +9,7 @@ footer#pulse-footer{box-sizing:border-box;display:block;width:100%;max-width:non
 #pulse-footer .pulse-footer-badge svg{display:block;position:static;width:28px;height:28px;fill:none}
 #pulse-footer p{margin:0;padding:0;color:#d4cbe6;font:inherit;text-align:left}
 #pulse-footer .pulse-footer-links{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:12px 24px;width:100%;height:auto;min-height:0;max-width:none;margin:0;padding:0;list-style:none}
-#pulse-footer .pulse-footer-links a{display:inline-block;margin:0;padding:4px 0;color:#e1d8ff!important;font:inherit;line-height:1.6;letter-spacing:normal;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+#pulse-footer .pulse-footer-links a{display:inline-flex;align-items:center;min-height:44px;margin:0;padding:4px 0;color:#e1d8ff!important;font:inherit;line-height:1.6;letter-spacing:normal;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
 #pulse-footer .pulse-footer-links a:hover{color:#fff!important}
 #pulse-footer a:focus-visible{outline:3px solid #b998ff!important;outline-offset:5px;border-radius:3px}
 #pulse-footer .pulse-footer-copyright{margin:24px 0 0;padding:20px 0 0;border-top:1px solid #ffffff24;font-size:13px}
