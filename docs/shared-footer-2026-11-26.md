@@ -12,3 +12,5 @@ All 21 standalone public HTML pages with a footer (plus the onboarding page's fo
 Validation: 21 page bodies compared against the previous commit after excluding only the old/new footer, the standalone duplicate row and the new stylesheet link. No other mutations. 231 navigation destinations checked, no repeated destination within a footer. Public build passes and all 34 existing automated tests pass after installing the lockfile dependencies.
 
 Preview only; production is not promoted by this change.
+
+Browser verification: B2C, Business and Affiliate footer destinations checked in the deployed preview, including opening the Affiliate AGBs link. Narrow-layout check at approximately 337 CSS pixels: links fit without horizontal clipping and the footer top stacks vertically. B2C inherited a generic 100px navigation height; the shared footer now explicitly resets navigation height to auto.
