@@ -1,15 +1,7 @@
 name: PULSE V4 Preview Checks
 on:
   push:
-    branches: [main]
-    paths:
-      - 'personal-v4.html'
-      - 'personal-v4.css'
-      - 'personal-v4-offer.css'
-      - 'personal-v4-restoration.css'
-      - 'personal-trial-preview.html'
-      - 'scripts/check-v4-preview.js'
-      - '.github/workflows/pulse-v4-preview-checks.yml'
+    branches: [main, preview/business-product-tour]
   workflow_dispatch:
 permissions:
   contents: read

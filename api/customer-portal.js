@@ -15,7 +15,12 @@ module.exports=async function(req,res){
   if(!customer?.stripe_customer_id||customer.stripe_checkout_session_id!==id)return reply(res,404,{error:'Membership not found'});
   const stripe=new Stripe(stripeKey,{maxNetworkRetries:1,timeout:8000});
   const checkout=await stripe.checkout.sessions.retrieve(id);
-  if(checkout.livemode!==(mode==='live')||checkout.customer!==customer.stripe_customer_id||checkout.mode!=='subscription'||checkout.payment_status!=='paid')return reply(res,403,{error:'Membership not verified'});
+  let verified=checkout.mode==='subscription'&&checkout.payment_status==='paid';
+  if(checkout.mode==='setup'&&checkout.status==='complete'){
+   const [trial]=await db('pulse_trials','select=customer_id&stripe_checkout_session_id=eq.'+encodeURIComponent(id)+'&mode=eq.'+mode+'&limit=1');
+   verified=Boolean(trial?.customer_id);
+  }
+  if(checkout.livemode!==(mode==='live')||checkout.customer!==customer.stripe_customer_id||!verified)return reply(res,403,{error:'Membership not verified'});
   const portal=await stripe.billingPortal.sessions.create({customer:customer.stripe_customer_id,return_url:origin+'/abo-kuendigen.html'});
   if(!portal.url||new URL(portal.url).protocol!=='https:')throw new Error('Invalid portal URL');
   return reply(res,200,{url:portal.url});

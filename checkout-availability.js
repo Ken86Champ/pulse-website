@@ -1,5 +1,7 @@
 (() => {
-  window.pulseCheckoutAvailable = fetch('/api/secure-checkout', { cache: 'no-store' })
+  const trial = document.body?.dataset.checkoutFlow === 'trial'
+    || new URLSearchParams(location.search).get('flow') === 'trial';
+  window.pulseCheckoutAvailable = fetch('/api/secure-checkout' + (trial ? '?flow=trial' : ''), { cache: 'no-store' })
     .then(async response => response.ok && (await response.json()).available === true)
     .catch(() => false);
 

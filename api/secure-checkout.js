@@ -4,6 +4,13 @@ const { validate, db, checkoutConfig, reply, encryptHealthData, UUID, CONSENT_VE
 
 module.exports = async function (req, res) {
   let stage = 'request';
+  // The trial entry must never fall through to the legacy immediately paid membership.
+  // Enabled only after the separate readiness-driven trial integration passes its checks.
+  const flow = req.method === 'GET' ? req.query?.flow : req.body?.flow;
+  if (flow === 'trial') {
+    return require('./trial-checkout')(req, res);
+  }
+  if (flow !== undefined && flow !== 'paid') return reply(res, 400, { error: 'Invalid checkout flow' });
   if (req.method === 'GET') {
     if (process.env.PULSE_SECURE_ONBOARDING_ENABLED !== 'true') return reply(res, 200, { available: false });
     try {

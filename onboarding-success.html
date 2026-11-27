@@ -44,7 +44,7 @@ h1{font-size:clamp(34px,5vw,54px);line-height:1.09;letter-spacing:-.045em;margin
 <section class="panel"><div class="panel-head"><h2>Deine Mitgliedschaft</h2><span class="pill" id="state">In Prüfung</span></div>
 <div class="body"><p id="status" role="status" aria-live="polite">Zahlungsstatus wird abgerufen …</p>
 <div class="steps" id="steps" hidden><div class="step"><div class="step-num">01 · ERLEDIGT</div><strong>Angaben erhalten</strong><small>Dein Fragebogen ist sicher bei uns angekommen.</small></div><div class="step"><div class="step-num">02 · JETZT</div><strong>Dein Plan entsteht</strong><small>Dein Coach erstellt deinen Trainings- und Ernährungsplan aus deinen Angaben.</small></div><div class="step"><div class="step-num">03 · LOSLEGEN</div><strong>Zugang per WhatsApp</strong><small>Sobald dein Plan bereit ist, bekommst du eine WhatsApp mit deinem persönlichen Zugang zur PULSE-App.</small></div></div>
-<div class="actions"><a id="confirmation" class="secondary" hidden>Vertragsbestätigung speichern</a><button class="primary" type="button" id="portal" hidden>Mitgliedschaft verwalten</button><a class="secondary" href="/">Zur Startseite</a></div>
+<div class="actions"><a id="confirmation" class="secondary" hidden>Vertragsbestätigung speichern</a><button class="primary" type="button" id="portal" hidden>Mitgliedschaft verwalten</button><button class="secondary" type="button" id="trial-cancel" hidden>Gratis-Test kündigen</button><a class="secondary" href="/">Zur Startseite</a></div>
 <div id="error" role="alert"></div><p class="fine">Deine Mitgliedschaft kostet CHF 98 pro Monat und verlängert sich monatlich. Du kannst sie zum Ende der laufenden Abrechnungsperiode kündigen. Deine Zahlungsmethode und Kündigung verwaltest du über das Stripe-Kundenportal – auch später jederzeit über <a href="/abo-kuendigen.html">Abo kündigen</a>.</p>
 </div></section></main>
 <footer id="pulse-footer" aria-label="PULSE Seiteninformationen">
@@ -88,7 +88,26 @@ h1{font-size:clamp(34px,5vw,54px);line-height:1.09;letter-spacing:-.045em;margin
  if(!id||!/^cs_(live|test)_[A-Za-z0-9]+$/.test(id)){headline.textContent=t[6];intro.textContent=t[7];state.textContent='Nicht bestätigt';status.textContent='Bitte öffne den Link aus deiner Stripe-Zahlungsbestätigung.';return;}
  for(let i=0;i<10;i++){
   try{
-   const r=await fetch('/api/checkout-status?session_id='+encodeURIComponent(id),{cache:'no-store'}),data=await r.json();
+   const trial=new URLSearchParams(location.search).get('flow')==='trial';
+   const r=await fetch('/api/checkout-status?session_id='+encodeURIComponent(id)+(trial?'&flow=trial':''),{cache:'no-store'}),data=await r.json();
+   if(trial&&['awaiting_access','activating','trialing','active','cancelled'].includes(data.status)){
+    const ended=data.status==='cancelled',active=data.status==='active';
+    headline.textContent=ended?'Dein Gratis-Test ist beendet.':active?'Deine Mitgliedschaft ist aktiv.':data.status==='trialing'?'Deine 7 kostenlosen Tage laufen.':'Dein Coaching wird vorbereitet.';
+    intro.textContent=ended?'Deine Kündigung ist gespeichert.':data.trialEnd?'Kostenlos bis '+new Date(data.trialEnd).toLocaleString(lang)+'. Danach CHF 98 pro Monat.':'Deine Zahlungsmethode ist hinterlegt. Es wurde kein Abo-Betrag abgebucht.';
+    state.textContent=ended?'Gekündigt':data.status==='trialing'?'Gratis-Test aktiv':active?'Aktiv':'In Vorbereitung';
+    status.textContent=ended?'Es erfolgt keine Verlängerung des Gratis-Tests.':data.trialEnd?'Du kannst vor Testende kündigen, damit keine Abo-Kosten entstehen.':'Die sieben Tage beginnen erst nach bereitgestelltem Zugang und versendeter Einladung. Gesundheitsangaben werden vor der Freischaltung geprüft.';
+    document.querySelector('.fine').textContent='7 Tage kostenlos ab bereitgestelltem Zugang, danach CHF 98 pro Monat, monatlich kündbar. Bewahre diesen persönlichen Bestätigungslink auf. Kündigung und Support findest du auch jederzeit im Footer.';
+    portal.hidden=ended;
+    const cancel=document.getElementById('trial-cancel');cancel.hidden=ended||active;
+    cancel.onclick=async()=>{
+     if(!confirm('Gratis-Test kündigen und die automatische kostenpflichtige Verlängerung stoppen?'))return;
+     cancel.disabled=true;error.textContent='';
+     try{const result=await fetch('/api/trial-cancel',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:id})});const body=await result.json();if(!result.ok)throw Error();if(body.status==='use_portal'){portal.click();return;}location.reload();}
+     catch{error.textContent='Kündigung noch nicht bestätigt. Bitte erneut versuchen oder den Support im Footer kontaktieren.';cancel.disabled=false;}
+    };
+    const receipt=document.getElementById('confirmation');receipt.href='/api/trial-confirmation?session_id='+encodeURIComponent(id);receipt.hidden=false;receipt.textContent='Testbedingungen speichern';
+    return;
+   }
    if(data.status==='coaching_setup_required'){
     headline.textContent=t[0];intro.textContent=t[1];state.textContent=t[2];status.textContent=t[3];portal.hidden=false;const confirmation=document.getElementById('confirmation');confirmation.href='/api/order-confirmation?session_id='+encodeURIComponent(id);confirmation.hidden=false;document.getElementById('steps').hidden=false;return;
    }

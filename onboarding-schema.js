@@ -1,5 +1,6 @@
 'use strict';
 
+const trialConsentVersion='pulse-trial-2026-11-27-v1';
 const consentVersion='pulse-privacy-terms-2026-11-21-dach-v2';
 function latestEligibleBirthDate(now = new Date()) {
   const localDate = new Intl.DateTimeFormat('en-CA', {
@@ -39,5 +40,5 @@ const groups=[
 ['source','Wie hast du PULSE entdeckt?','select',['Google','Social Media','Empfehlung','Fitnessstudio / Partner','Andere Quelle']],['sourceDetails','Von wem oder wo genau? (optional)','optionalText'],['confirmation','Ich bestätige, dass meine Angaben nach bestem Wissen richtig und vollständig sind.','checkbox'],['healthConsent','Ich willige ausdrücklich ein, dass PULSE meine Gesundheitsangaben zur Erstellung und Betreuung meines persönlichen Coachings verarbeitet, einschliesslich der hierfür erforderlichen KI-gestützten Verarbeitung durch die in der Datenschutzerklärung genannten Anbieter, gegebenenfalls auch in den USA. Ich kann diese Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.','checkbox'],['termsAccepted','Ich akzeptiere die Mitgliedschaftsbedingungen von PULSE.','checkbox']]}
 ];
 const countryCodes='AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW'.split(' ');
-if (typeof module === 'object') module.exports = { groups, countryCodes, consentVersion, latestEligibleBirthDate };
-else window.pulseOnboardingSchema = { groups, countryCodes, consentVersion, latestEligibleBirthDate };
+if (typeof module === 'object') module.exports = { groups, countryCodes, consentVersion, trialConsentVersion, latestEligibleBirthDate };
+else window.pulseOnboardingSchema = { groups, countryCodes, consentVersion, trialConsentVersion, latestEligibleBirthDate };

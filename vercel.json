@@ -43,6 +43,9 @@
   "functions": {
     "api/order-confirmation.js": {
       "includeFiles": "legal/versions/**"
+    },
+    "api/trial-confirmation.js": {
+      "includeFiles": "legal/versions/**"
     }
   }
 }

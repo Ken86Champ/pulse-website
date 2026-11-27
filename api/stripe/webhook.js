@@ -2,6 +2,7 @@ const Stripe = require('stripe');
 const { randomBytes, createHash } = require('node:crypto');
 const { db, config, reply } = require('../../lib/onboarding-server');
 const { fulfill, LIFECYCLE_EVENTS, RISK_EVENTS } = require('../../lib/pulse-fulfillment');
+const { FLOW, registerSession, syncTrialSubscription } = require('../../lib/pulse-trial');
 
 async function provision(session, stripe) {
   const tenant = process.env.PULSE_ONBOARDING_TENANT_ID;
@@ -75,6 +76,18 @@ async function handler(req, res) {
   const stripe = secretKey && new Stripe(secretKey, { maxNetworkRetries: 1, timeout: 8000 });
   const secure = event.data.object.metadata?.pulse_flow === 'onboarding_v1';
   try {
+    const trial = event.data.object.metadata?.pulse_flow === FLOW;
+    if (trial || event.type === 'customer.subscription.created') {
+      const { mode } = config();
+      if (!stripe || event.livemode !== (mode === 'live')) return reply(res, 400, { error: 'Unexpected Stripe mode' });
+      if (event.type === 'checkout.session.completed') await registerSession(event.data.object, mode, stripe);
+      else if (event.type === 'checkout.session.expired' && trial) {
+        const session = event.data.object;
+        await db('pulse_trials', `stripe_checkout_session_id=eq.${encodeURIComponent(session.id)}&status=eq.awaiting_setup&mode=eq.${mode}`, 'PATCH', { status: 'cancelled', encrypted_answers: null, attempt_fingerprint: null, email: null });
+      }
+      else if (event.type.startsWith('customer.subscription.')) await syncTrialSubscription(event.data.object.id, mode, stripe);
+      if (trial) return reply(res, 200, { received: true });
+    }
     if (secure || ([...LIFECYCLE_EVENTS, ...RISK_EVENTS, 'customer.updated'].includes(event.type) && process.env.PULSE_SECURE_ONBOARDING_ENABLED === 'true')) {
       if (process.env.PULSE_SECURE_ONBOARDING_ENABLED !== 'true') return reply(res, 503, { error: 'Checkout temporarily paused' });
       const { mode } = config();

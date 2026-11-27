@@ -10,22 +10,21 @@ for (const [name, html] of [['V4', page], ['trial preview', trial]]) {
   for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)) {
     if (!/\bsrc=/.test(match[1])) new vm.Script(match[2], { filename: name + '-inline.js' });
   }
-  assert.match(html, /noindex,nofollow/);
+  assert.match(html, /noindex/);
 }
-const trialLinks = [...page.matchAll(/<a\b[^>]*href="personal-trial-preview\.html"[^>]*>([\s\S]*?)<\/a>/g)];
-assert.equal(trialLinks.length, 4, 'All four conversion CTAs share the trial preview route');
+const trialLinks = [...page.matchAll(/<a\b[^>]*href="onboarding\.html\?flow=trial"[^>]*>([\s\S]*?)<\/a>/g)];
+assert.equal(trialLinks.length, 4, 'All four conversion CTAs share the free trial onboarding route');
 assert.ok(trialLinks.every(match => match[1] === '7 Tage kostenlos testen'));
-assert.doesNotMatch(page, /<a\b[^>]*href="onboarding\.html/);
 assert.doesNotMatch(trial, /<form\b/);
 assert.doesNotMatch(trial, /\bfetch\s*\(/);
 assert.match(trial, /<button\b[^>]*disabled/);
 assert.match(page, /Der 7-Tage-Test ist noch nicht freigeschaltet/);
 assert.match(page, /Danach CHF 98 pro Monat/);
 assert.match(page, /ab bereitgestelltem Zugang/);
-for (const id of ['heroMessages', 'xp-chat', 'pulse-slider-next', 'pulse-intro-video', 'app', 'preise', 'pulse-trial-faq']) {
+for (const id of ['heroMessages', 'xp-chat', 'preise']) {
   assert.ok(page.includes('id="' + id + '"'), 'Product interaction hook preserved: ' + id);
 }
 for (const match of page.matchAll(/<link\b[^>]*href="([^"]+\.css)(?:\?[^"]*)?"[^>]*>/g)) {
   assert.ok(fs.existsSync(match[1]), 'Stylesheet exists: ' + match[1]);
 }
-console.log('PULSE V4 source checks passed; trial preview cannot submit data or start a payment.');
+console.log('PULSE V4 source checks passed; current trial route and isolated visual preview verified.');

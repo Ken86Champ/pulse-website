@@ -17,6 +17,17 @@ module.exports = async function (req, res) {
   if (!id.startsWith(`cs_${process.env.PULSE_STRIPE_MODE}_`)) return reply(res, 404, { status: 'not_found' });
 
   try {
+    if (req.query?.flow === 'trial') {
+      const { registerSession } = require('../lib/pulse-trial');
+      const filter = `select=id,status,trial_end,stripe_subscription_id,stripe_checkout_session_id&stripe_checkout_session_id=eq.${id}&mode=eq.${process.env.PULSE_STRIPE_MODE}`;
+      let [trial] = await db('pulse_trials', filter);
+      if (trial?.status === 'awaiting_setup') {
+        const stripe = new Stripe(process.env.PULSE_STRIPE_SECRET_KEY, { maxNetworkRetries: 1, timeout: 8000 });
+        await registerSession(await stripe.checkout.sessions.retrieve(id), process.env.PULSE_STRIPE_MODE, stripe);
+        [trial] = await db('pulse_trials', filter);
+      }
+      return reply(res, trial ? 200 : 404, { status: trial?.status ?? 'not_found', trialEnd: trial?.trial_end ?? null });
+    }
     const filter = `select=status&stripe_checkout_session_id=eq.${id}`;
     let [row] = await db('pulse_checkout_pending', filter);
     // A return from Stripe can arrive before its webhook. Verify payment with
