@@ -15,6 +15,36 @@
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
           "assets": []
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "header",
+          "markup": "design-system/sections/header/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "header",
+          "markup": "design-system/sections/header/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "header",
+          "markup": "design-system/sections/header/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
         }
       }
     },
@@ -29,6 +59,36 @@
           "status": "extracted-reference",
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": ".hero",
+          "markup": "design-system/sections/hero/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": ".hero",
+          "markup": "design-system/sections/hero/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": ".hero",
+          "markup": "design-system/sections/hero/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
           "assets": []
         }
       }
@@ -48,6 +108,45 @@
             "assets/8d7a36ea364e.jpg",
             "assets/e7f0724400e2.mp4"
           ]
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#was-ist-pulse",
+          "markup": "design-system/sections/intro/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/8d7a36ea364e.jpg",
+            "assets/e7f0724400e2.mp4"
+          ]
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#was-ist-pulse",
+          "markup": "design-system/sections/intro/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/8d7a36ea364e.jpg",
+            "assets/e7f0724400e2.mp4"
+          ]
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#was-ist-pulse",
+          "markup": "design-system/sections/intro/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/8d7a36ea364e.jpg",
+            "assets/e7f0724400e2.mp4"
+          ]
         }
       }
     },
@@ -62,6 +161,36 @@
           "status": "extracted-reference",
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#warum-pulse",
+          "markup": "design-system/sections/solution/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#warum-pulse",
+          "markup": "design-system/sections/solution/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#warum-pulse",
+          "markup": "design-system/sections/solution/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
           "assets": []
         }
       }
@@ -82,6 +211,48 @@
             "assets/6a5a3af70587.jpg",
             "assets/b359ceed0b2e.mp4"
           ]
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#live-erleben",
+          "markup": "design-system/sections/experience/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/a5bfefd2a134.png",
+            "assets/6a5a3af70587.jpg",
+            "assets/b359ceed0b2e.mp4"
+          ]
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#live-erleben",
+          "markup": "design-system/sections/experience/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/a5bfefd2a134.png",
+            "assets/6a5a3af70587.jpg",
+            "assets/b359ceed0b2e.mp4"
+          ]
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#live-erleben",
+          "markup": "design-system/sections/experience/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/a5bfefd2a134.png",
+            "assets/6a5a3af70587.jpg",
+            "assets/b359ceed0b2e.mp4"
+          ]
         }
       }
     },
@@ -97,6 +268,36 @@
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
           "assets": []
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#pulse-unterschied",
+          "markup": "design-system/sections/comparison/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#pulse-unterschied",
+          "markup": "design-system/sections/comparison/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#pulse-unterschied",
+          "markup": "design-system/sections/comparison/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
         }
       }
     },
@@ -111,6 +312,54 @@
           "status": "extracted-reference",
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": [
+            "assets/27d90104664a.png",
+            "assets/d1362c50928f.png",
+            "assets/374230397a0c.png",
+            "assets/5575c389b7cb.png",
+            "assets/9ae7c4ccd82c.png"
+          ]
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#erfahrung",
+          "markup": "design-system/sections/proof/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/27d90104664a.png",
+            "assets/d1362c50928f.png",
+            "assets/374230397a0c.png",
+            "assets/5575c389b7cb.png",
+            "assets/9ae7c4ccd82c.png"
+          ]
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#erfahrung",
+          "markup": "design-system/sections/proof/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/27d90104664a.png",
+            "assets/d1362c50928f.png",
+            "assets/374230397a0c.png",
+            "assets/5575c389b7cb.png",
+            "assets/9ae7c4ccd82c.png"
+          ]
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#erfahrung",
+          "markup": "design-system/sections/proof/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
           "assets": [
             "assets/27d90104664a.png",
             "assets/d1362c50928f.png",
@@ -136,6 +385,45 @@
             "assets/9859b8315df3.png",
             "assets/b359ceed0b2e.mp4"
           ]
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#app",
+          "markup": "design-system/sections/app/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/9859b8315df3.png",
+            "assets/b359ceed0b2e.mp4"
+          ]
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#app",
+          "markup": "design-system/sections/app/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/9859b8315df3.png",
+            "assets/b359ceed0b2e.mp4"
+          ]
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#app",
+          "markup": "design-system/sections/app/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/9859b8315df3.png",
+            "assets/b359ceed0b2e.mp4"
+          ]
         }
       }
     },
@@ -150,6 +438,42 @@
           "status": "extracted-reference",
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": [
+            "assets/ab36d8028adc.png"
+          ]
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#datenschutz",
+          "markup": "design-system/sections/privacy/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/ab36d8028adc.png"
+          ]
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#datenschutz",
+          "markup": "design-system/sections/privacy/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/ab36d8028adc.png"
+          ]
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#datenschutz",
+          "markup": "design-system/sections/privacy/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
           "assets": [
             "assets/ab36d8028adc.png"
           ]
@@ -168,6 +492,36 @@
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
           "assets": []
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#preise",
+          "markup": "design-system/sections/pricing/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#preise",
+          "markup": "design-system/sections/pricing/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#preise",
+          "markup": "design-system/sections/pricing/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
         }
       }
     },
@@ -182,6 +536,36 @@
           "status": "extracted-reference",
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#faq",
+          "markup": "design-system/sections/faq/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#faq",
+          "markup": "design-system/sections/faq/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#faq",
+          "markup": "design-system/sections/faq/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
           "assets": []
         }
       }
@@ -198,6 +582,36 @@
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
           "assets": []
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#start",
+          "markup": "design-system/sections/cta/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#start",
+          "markup": "design-system/sections/cta/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#start",
+          "markup": "design-system/sections/cta/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
         }
       }
     },
@@ -212,6 +626,36 @@
           "status": "extracted-reference",
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": ".single-audience",
+          "markup": "design-system/sections/business/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": ".single-audience",
+          "markup": "design-system/sections/business/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": ".single-audience",
+          "markup": "design-system/sections/business/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
           "assets": []
         }
       }
@@ -230,6 +674,42 @@
           "assets": [
             "assets/a5bfefd2a134.png"
           ]
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "#app-download",
+          "markup": "design-system/sections/download/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/a5bfefd2a134.png"
+          ]
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "#app-download",
+          "markup": "design-system/sections/download/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/a5bfefd2a134.png"
+          ]
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "#app-download",
+          "markup": "design-system/sections/download/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": [
+            "assets/a5bfefd2a134.png"
+          ]
         }
       }
     },
@@ -244,6 +724,36 @@
           "status": "extracted-reference",
           "module_ready": false,
           "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-bold-headings": {
+          "source_commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+          "source_path": "index.html",
+          "selector": "footer",
+          "markup": "design-system/sections/footer/v4-bold-headings/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-final-consistency": {
+          "source_commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+          "source_path": "index.html",
+          "selector": "footer",
+          "markup": "design-system/sections/footer/v4-final-consistency/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
+          "assets": []
+        },
+        "v4-release-check": {
+          "source_commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+          "source_path": "index.html",
+          "selector": "footer",
+          "markup": "design-system/sections/footer/v4-release-check/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original version CSS/JS/assets; isolate and test before composition",
           "assets": []
         }
       }
