@@ -1,0 +1,12 @@
+# Quality Gate
+- [ ] Quell-Commit, Varianten, Tokens, Asset-Versionen dokumentiert.
+- [ ] Nur beauftragte Bereiche geändert; Diff und Screenshot-Vergleich unveränderter Abschnitte.
+- [ ] 1440, 1024, 768, 390 und 320 px getestet; kein Überlauf.
+- [ ] Font tatsächlich geladen; Typografie, Farben, Abstände konsistent.
+- [ ] Originalbilder, Videos und App-Screens vollständig; keine kaputten Assets.
+- [ ] Sechs Szenen, Vor/Zurück, Wiedergabe/Pause, Chat-Reihenfolge, Sync vor/nach Bestätigung, Mobile-Umschaltung.
+- [ ] App-Galerie, FAQ, Video, Sprache, Navigation, Tastatur, reduced motion.
+- [ ] Kaufweg/Onboarding/Legal im Testmodus; keine echten Zahlungen/Daten.
+- [ ] Keine unbelegten Marketingclaims; Preis und Vertrag geprüft.
+- [ ] Performance, Konsole, Netzwerk; Vorher/Nachher.
+- [ ] Preview, Restpunkte, explizite Freigabe vor Produktion.

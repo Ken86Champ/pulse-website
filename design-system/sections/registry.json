@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "status": "source-inventory",
+  "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+  "sections": {
+    "header": {
+      "label": "Navigation",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "header",
+          "markup": "design-system/sections/header/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        }
+      }
+    },
+    "hero": {
+      "label": "Hero",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": ".hero",
+          "markup": "design-system/sections/hero/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        }
+      }
+    },
+    "intro": {
+      "label": "Was ist PULSE",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#was-ist-pulse",
+          "markup": "design-system/sections/intro/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": [
+            "assets/8d7a36ea364e.jpg",
+            "assets/e7f0724400e2.mp4"
+          ]
+        }
+      }
+    },
+    "solution": {
+      "label": "Coach, Chat und App",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#warum-pulse",
+          "markup": "design-system/sections/solution/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        }
+      }
+    },
+    "experience": {
+      "label": "Ein Tag mit PULSE",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#live-erleben",
+          "markup": "design-system/sections/experience/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": [
+            "assets/a5bfefd2a134.png",
+            "assets/6a5a3af70587.jpg",
+            "assets/b359ceed0b2e.mp4"
+          ]
+        }
+      }
+    },
+    "comparison": {
+      "label": "Der Unterschied",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#pulse-unterschied",
+          "markup": "design-system/sections/comparison/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        }
+      }
+    },
+    "proof": {
+      "label": "Erfahrungen",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#erfahrung",
+          "markup": "design-system/sections/proof/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": [
+            "assets/27d90104664a.png",
+            "assets/d1362c50928f.png",
+            "assets/374230397a0c.png",
+            "assets/5575c389b7cb.png",
+            "assets/9ae7c4ccd82c.png"
+          ]
+        }
+      }
+    },
+    "app": {
+      "label": "App-Galerie",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#app",
+          "markup": "design-system/sections/app/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": [
+            "assets/9859b8315df3.png",
+            "assets/b359ceed0b2e.mp4"
+          ]
+        }
+      }
+    },
+    "privacy": {
+      "label": "Datenschutz",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#datenschutz",
+          "markup": "design-system/sections/privacy/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": [
+            "assets/ab36d8028adc.png"
+          ]
+        }
+      }
+    },
+    "pricing": {
+      "label": "Mitgliedschaft",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#preise",
+          "markup": "design-system/sections/pricing/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        }
+      }
+    },
+    "faq": {
+      "label": "FAQ",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#faq",
+          "markup": "design-system/sections/faq/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        }
+      }
+    },
+    "cta": {
+      "label": "Final CTA",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#start",
+          "markup": "design-system/sections/cta/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        }
+      }
+    },
+    "business": {
+      "label": "B2B-Verweis",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": ".single-audience",
+          "markup": "design-system/sections/business/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        }
+      }
+    },
+    "download": {
+      "label": "App-Download",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "#app-download",
+          "markup": "design-system/sections/download/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": [
+            "assets/a5bfefd2a134.png"
+          ]
+        }
+      }
+    },
+    "footer": {
+      "label": "Footer",
+      "variants": {
+        "legacy-original": {
+          "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+          "source_path": "index.html",
+          "selector": "footer",
+          "markup": "design-system/sections/footer/legacy-original/section.html",
+          "status": "extracted-reference",
+          "module_ready": false,
+          "dependencies": "Original page CSS, JavaScript and assets; isolate and test before composition",
+          "assets": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "note": "Pinned historical sources, not claims of approval or mapping to conversational V-numbers.",
+  "sources": [
+    {
+      "branch": "main",
+      "commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+      "url": "https://github.com/Ken86Champ/pulse-website/tree/bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2"
+    },
+    {
+      "branch": "audit/premium-launch-2026-11-23",
+      "commit": "4113c8a910d3891be7d0f8314a87c14d408ef89a",
+      "url": "https://github.com/Ken86Champ/pulse-website/tree/4113c8a910d3891be7d0f8314a87c14d408ef89a"
+    },
+    {
+      "branch": "preview/v4-bold-headings",
+      "commit": "9048f0b3e57399f78a6fc6aaba44a566f550698a",
+      "url": "https://github.com/Ken86Champ/pulse-website/tree/9048f0b3e57399f78a6fc6aaba44a566f550698a"
+    },
+    {
+      "branch": "preview/v4-final-consistency",
+      "commit": "4a26376eb95bbb880198f85f26c683c4f4101911",
+      "url": "https://github.com/Ken86Champ/pulse-website/tree/4a26376eb95bbb880198f85f26c683c4f4101911"
+    },
+    {
+      "branch": "preview/v4-release-check",
+      "commit": "ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae",
+      "url": "https://github.com/Ken86Champ/pulse-website/tree/ae6cba6dc3b90b48dcd32a0593f2702450f0d5ae"
+    },
+    {
+      "branch": "preview/acid-partner",
+      "commit": "ae8f3c6fef7de638fa496c4935d0a56ef200254b",
+      "url": "https://github.com/Ken86Champ/pulse-website/tree/ae8f3c6fef7de638fa496c4935d0a56ef200254b"
+    },
+    {
+      "branch": "preview/blue-partner",
+      "commit": "a91250596d9481a9da70ad000b6d260f413718c7",
+      "url": "https://github.com/Ken86Champ/pulse-website/tree/a91250596d9481a9da70ad000b6d260f413718c7"
+    },
+    {
+      "branch": "preview/business-product-tour",
+      "commit": "bec685173d656a7d6868853671c07b17b6454134",
+      "url": "https://github.com/Ken86Champ/pulse-website/tree/bec685173d656a7d6868853671c07b17b6454134"
+    },
+    {
+      "branch": "pulse-business-preview",
+      "commit": "1990b877f89061b4f8a64dea86014ece5ecd9fd0",
+      "url": "https://github.com/Ken86Champ/pulse-website/tree/1990b877f89061b4f8a64dea86014ece5ecd9fd0"
+    }
+  ]
+}
