@@ -1,0 +1,71 @@
+{
+  "page": "pulse-b2c",
+  "revision": "legacy-baseline",
+  "status": "reference",
+  "source_commit": "bf5df52b3afe78ac1cdfc61caf9100dbbc74c0a2",
+  "source_path": "index.html",
+  "design_tokens": "design-system/design/tokens.css",
+  "tokens_status": "candidate-not-applied",
+  "sections": [
+    {
+      "id": "header",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "hero",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "intro",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "solution",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "experience",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "comparison",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "proof",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "app",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "privacy",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "pricing",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "faq",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "cta",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "business",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "download",
+      "variant": "legacy-original"
+    },
+    {
+      "id": "footer",
+      "variant": "legacy-original"
+    }
+  ]
+}
